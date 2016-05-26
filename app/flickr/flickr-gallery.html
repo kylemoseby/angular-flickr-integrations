@@ -1,0 +1,5 @@
+<div class="masonry" masonry item-selector=".thumbnails" reload-on-resize masonry-options="{ percentPosition: true, transitionDuration: 0 }">
+  <div  ng-repeat="img in gallery.photoset.photo" masonry-brick class="thumbnails" ng-class="{'large-thumbnails': gallery.thumbsize === 'lg', 'small-thumbnails': gallery.thumbsize === 'sm'}">
+    <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_m.jpg" ng-click="gallery.thumbnailClick(img, $index)">
+  </div>
+</div>

@@ -1,0 +1,15 @@
+{{recent._photoDetail_}}
+<div class="masonry" masonry item-selector=".thumbnails" reload-on-resize reload-on-show masonry-options="{ percentPosition: true, transitionDuration: 0 }">
+  <div ng-repeat="img in recent.showPhotos" masonry-brick class="thumbnails" ng-class="{'large-thumbnails': recent.thumbsize === 'lg', 'small-thumbnails': recent.thumbsize === 'sm'}">
+    <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_s.jpg" ng-click="recent.thumbnailClick(img, $index)">
+  </div>
+</div>
+<nav>
+  <ul class="pager" ng-hide="recent.photos.photo.length === 0">
+    <li>
+      <a ng-click="recent.thumbnailsAdd()">
+        <span class="glyphicon glyphicon-plus"></span>
+      </a>
+    </li>
+  </ul>
+</nav>
