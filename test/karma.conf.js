@@ -30,21 +30,18 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-      'bower_components/get-size/get-size.js',
-      'bower_components/ev-emitter/ev-emitter.js',
-      'bower_components/desandro-matches-selector/matches-selector.js',
-      'bower_components/fizzy-ui-utils/utils.js',
-      'bower_components/outlayer/outlayer.js',
-      'bower_components/masonry/masonry.js',
-      'bower_components/imagesloaded/imagesloaded.js',
-      'bower_components/jquery-bridget/jquery-bridget.js',
-      'bower_components/angular-masonry/angular-masonry.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
-      'test/spec/**/*.js'
+      'test/spec/**/*.js',
+      'app/flickr/**/*.html'
     ],
+
+    // generate js files from html templates to expose them during testing.
+    preprocessors: {
+      'app/flickr/**/*.html': 'html2js'
+    },
 
     // list of files / patterns to exclude
     exclude: [],
@@ -79,13 +76,13 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
 
     // Uncomment the following lines if you are using grunt's server to run the tests
-    // proxies: {
-    //   '/': 'http://localhost:9000/'
-    // },
+    proxies: {
+      '/': 'http://localhost:9000/'
+    },
     // URL root prevent conflicts with the site root
-    // urlRoot: '_karma_'
+    urlRoot: '_karma_'
   });
 };
