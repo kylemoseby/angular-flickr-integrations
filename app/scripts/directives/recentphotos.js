@@ -7,25 +7,18 @@
  * # recentPhotos
  */
 angular.module('flickrportfolioApp')
-  .directive('recentPhotos', ['restAPI', function($flickr) {
+  .directive('recentPhotos', [function() {
 
-    function link(scope, element) {
+    function link(scope) {
 
-      console.log(scope);
+      scope.index = null;
+      scope.photoDetail = {};
 
-      var userId = element.attr('user-id');
+      scope.photoCount = scope.photoCount || 10;
+      scope.photoStep = scope.photoStep || 5;
+      scope.thumbsize = 'lg'; // 'sm'
 
-      scope.recent = scope.recent || {
-        '_index_': null,
-        'photos': null,
-        '_photoDetail_': {
-
-        },
-        'showPhotos': [],
-        'thumbsize': 'lg' // 'sm'
-      };
-
-      scope.recent.toggleThumbsize = function() {
+      scope.toggleThumbsize = function() {
 
         var currentSize = this.thumbsize;
 
@@ -35,29 +28,18 @@ angular.module('flickrportfolioApp')
         // https://github.com/passy/angular-masonry/issues/71
 
         this.$root.$broadcast('masonry.reload');
+
       };
 
-      scope.recent.thumbnailsAdd = function() {
+      scope.thumbnailsAdd = function() {
+        this.photoCount = this.photoCount + this.photoStep;
 
-        var showThese = scope.recent.photos.photo.splice(0, 10);
-
-        scope.recent.showPhotos = scope.recent.showPhotos.concat(showThese);
       };
 
-      scope.recent.thumbnailClick = function(img, ind) {
-        console.log(this);
-
-        this._photoDetail_ = img;
-        this._index_ = ind;
+      scope.thumbnailClick = function(img, ind) {
+        scope.photoDetail = img;
+        scope.index = ind;
       };
-
-      var photoData = new $flickr.getRecent(userId);
-
-      photoData.then(function(data) {
-        scope.recent.photos = data.data.photos;
-
-        scope.recent.thumbnailsAdd();
-      });
 
     }
 
@@ -65,9 +47,11 @@ angular.module('flickrportfolioApp')
       link: link,
       templateUrl: 'flickr/flickr-recent.html',
       restrict: 'E',
-      // scope: {
-      //   galleryId: '=galleryId'
-      // }
+      scope: {
+        recent: '=flickrId',
+        count: '=count',
+        step: '=step'
+      }
     };
 
   }]);

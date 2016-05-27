@@ -1,18 +1,17 @@
 <div class="row">
   <div class="col-md-4">
-    {{$galleryID}}
-    <flickr-gallery flickr-key="$galleryId"></flickr-gallery>
+    <!-- {{galleryID}} -->
+    <flickr-gallery flickr-key="galleryID"></flickr-gallery>
   </div>
   <div class="col-md-8">
     <flickr-photo flickr-id="gallery.photoDetail"></flickr-photo>
   </div>
 </div>
-<div class="jumbotron">
-  <div class="row">
-    <recent-photos gallery-id="$recent" user-id="91631856@N00" class="col-md-6"></recent-photos>
-    <div class="col-md-6">
-      <flickr-photo photo-id="recent._photoDetail_y"></flickr-photo>
-    </div>
+<div class="row">
+  <recent-photos flickr-id="recent" class="col-md-6"></recent-photos>
+  <div class="col-md-6">
+    <!-- <flickr-photo photo-id="recent._photoDetail_y"></flickr-photo> -->
   </div>
-  <p><a class="btn btn-lg btn-success" ng-href="#/"><span class="glyphicon glyphicon-ok"></span></a></p>
+</div>
+<p><a class="btn btn-lg btn-success" ng-href="#/"><span class="glyphicon glyphicon-ok"></span></a></p>
 </div>

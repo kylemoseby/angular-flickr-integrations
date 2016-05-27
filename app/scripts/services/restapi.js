@@ -14,8 +14,6 @@ angular.module('flickrportfolioApp')
 
     function _getPhotoset(setid) {
 
-      console.log(setid);
-
       return $http
         .jsonp('https://api.flickr.com/services/rest/', {
           cache: false,
@@ -31,6 +29,7 @@ angular.module('flickrportfolioApp')
     }
 
     function _getRecent(userid) {
+
       return $http
         .jsonp('https://api.flickr.com/services/rest/', {
           cache: false,
@@ -47,6 +46,7 @@ angular.module('flickrportfolioApp')
     }
 
     function _getImg(imgid) {
+
       return $http
         .jsonp('https://api.flickr.com/services/rest/', {
           cache: false,

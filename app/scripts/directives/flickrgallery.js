@@ -11,13 +11,11 @@ angular.module('flickrportfolioApp')
 
     function link(scope) {
 
-      var galleryID = scope.key;
+      var galleryID = scope.flickrKey;
 
       var galleryData = new $flickr.getPhotoset(galleryID);
 
       galleryData.then(function(data) {
-
-        console.log(data.data.stat);
 
         scope.gallery[galleryID] = data.data;
 
@@ -25,10 +23,7 @@ angular.module('flickrportfolioApp')
 
       scope.gallery = scope.gallery || {
 
-        thumbnailClick: function(img, ind) {
-          console.log(img);
-
-          console.log(ind);
+        thumbnailClick: function() {
           // try {
           // if (typeof scope.gallery.detailSet === 'function') {
           // scope.gallery.detailSet(img);
@@ -54,7 +49,7 @@ angular.module('flickrportfolioApp')
     return {
       'templateUrl': 'flickr/flickr-gallery.html',
       scope: {
-        key: '=flickrKey'
+        flickrKey: '=flickrKey'
       },
       link: link
     };
