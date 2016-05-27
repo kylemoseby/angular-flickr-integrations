@@ -488,4 +488,7 @@ module.exports = function(grunt) {
     'test',
     'build'
   ]);
+
+
+  grunt.loadNpmTasks('grunt-html2js');
 };

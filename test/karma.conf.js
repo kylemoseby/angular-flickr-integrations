@@ -33,14 +33,18 @@ module.exports = function(config) {
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
-      'test/mock/**/*.js',
       'test/spec/**/*.js',
       'app/flickr/**/*.html'
     ],
 
     // generate js files from html templates to expose them during testing.
     preprocessors: {
-      'app/flickr/**/*.html': 'html2js'
+      'app/flickr/**/*.html': 'ng-html2js'
+    },
+
+    ngHtml2JsPreprocessor: {
+      // strip app from the file path
+      stripPrefix: 'app/'
     },
 
     // list of files / patterns to exclude
@@ -65,7 +69,9 @@ module.exports = function(config) {
     // Which plugins to enable
     plugins: [
       'karma-phantomjs-launcher',
-      'karma-jasmine'
+      'karma-jasmine',
+      'karma-ng-html2js-preprocessor',
+      'ng-html2js'
     ],
 
     // Continuous Integration mode
@@ -76,7 +82,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_INFO,
 
     // Uncomment the following lines if you are using grunt's server to run the tests
     proxies: {

@@ -3,16 +3,23 @@ var $ = $ || {};
 
 describe('Directive: recentPhotos', function() {
 
+  var element,
+    $rootScope;
+
   // load the directive's module
   beforeEach(module('flickrportfolioApp'));
 
-  var element,
-    $rootScope,
-    $compile;
+  beforeEach(module('app/flickr/flickr-recent.html'));
 
-  beforeEach(inject(function(_$compile_, _$rootScope_) {
+  beforeEach(inject(function(_$rootScope_) {
+
+    console.log(_$rootScope_);
+
+    // template = $templateCache.get('app/flickr/flickr-recent.html');
+
+    // $templateCache.put('flickr/flickr-recent.html', template);
+
     // The injector unwraps the underscores (_) from around the parameter names when matching
-    $compile = _$compile_;
     $rootScope = _$rootScope_;
 
     // DEFAULT
@@ -22,7 +29,6 @@ describe('Directive: recentPhotos', function() {
     $rootScope.count = 10;
     $rootScope.step = 5;
     $rootScope.thumbsize = 'lg'; // 'sm'
-
   }));
 
 
@@ -32,12 +38,12 @@ describe('Directive: recentPhotos', function() {
   //   // expect(element.text()).toBe('this is the recentPhotos directive');
   // }));
 
-  it('should have a limited number of photos to start', function() {
-    element = $compile('<recent-photos></recent-photos>')($rootScope);
+  it('should have a limited number of photos to start', function($compile) {
+    console.log($rootScope);
+
+    // element = $compile('<recent-photos></recent-photos>')($rootScope);
 
     $rootScope.$digest();
-
-    console.log(element.html());
 
     expect(true).toBe(true);
   });
