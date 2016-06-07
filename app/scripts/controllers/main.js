@@ -17,9 +17,7 @@ angular.module('flickrportfolioApp')
     var photoData = new $flickr.getRecent('91631856@N00');
 
     photoData.then(function(data) {
-
       $scope.recent = data.data;
-
     });
 
   }]);
