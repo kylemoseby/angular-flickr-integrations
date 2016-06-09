@@ -9,11 +9,40 @@
 angular.module('flickrportfolioApp')
   .directive('flickrImg', function() {
     return {
-      // template: '<img src="https://farm{{farm-id}}.staticflickr.com/{{server-id}}/{{id}}_{{secret}}_b.jpg">',
-      template: '{{img}}',
+      templateUrl: 'flickr/flickr-img.html',
       restrict: 'E',
       link: function(scope) {
-        console.log(scope);
+
+        function setWidthsdasdas() {
+          // MAKES TESTING HARD TO USE WINDOW FIX LATER
+          var wdth = window.innerWidth;
+
+          if (wdth > 1600) {
+
+            scope.size = 'h';
+
+          } else if (800 > wdth > 1024) {
+
+            scope.size = 'b';
+
+          } else if (320 > wdth > 800) {
+
+            scope.size = 'c';
+
+          } else if (wdth > 320) {
+
+            scope.size = 'n';
+          }
+        }
+
+        setWidthsdasdas();
+
+        window.onresize = function() {
+
+          setWidthsdasdas();
+
+          scope.$digest();
+        };
       },
       scope: {
         img: '=info'

@@ -12,9 +12,12 @@ angular.module('flickrportfolioApp')
 
       scope.index = null;
       scope.photoDetail = null;
+      scope.thumbnailsShow = [];
+      scope.recent = scope.recent || null;
 
-      scope.photoCount = scope.photoCount || 10;
+      scope.photoCount = scope.photoCount || 5;
       scope.photoStep = scope.photoStep || 5;
+
       scope.thumbsize = 'lg'; // 'sm'
 
       scope.toggleThumbsize = function() {
@@ -30,7 +33,10 @@ angular.module('flickrportfolioApp')
       };
 
       scope.thumbnailsAdd = function() {
-        this.photoCount = this.photoCount + this.photoStep;
+
+        scope.thumbnailsShow = scope.recent.photos.photo.slice(0, scope.photoCount);
+
+        scope.photoCount += scope.photoStep;
       };
 
       scope.thumbnailClick = function(img, ind) {

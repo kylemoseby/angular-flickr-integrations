@@ -1,37 +1,33 @@
 <!-- PHOTODETAIL START -->
 <div class="recent-detail-photo" ng-show="photoDetail !== null">
-  <div>
-    <flickr-img info="photoDetail"></flickr-img>
-    div>
-    <div class="recent-detail-descrip">
-      {{photoDetail.title}} {{photoDetail.description._content}}
-    </div>
+  <!-- <flickr-img info="photoDetail"></flickr-img> -->
+  <flickr-img info="photoDetail"></flickr-img>
+  <div class="recent-detail-descrip">
+    {{photoDetail.title}} {{photoDetail.description._content}}
   </div>
-  <!-- PHOTODETAIL END -->
-  <!-- ERROR START -->
-  <br>
-  <div class="alert alert-danger" role="alert" ng-show="recent.stat == 'fail'">
-    <b>An error occurred</b>
-    <br> Code: {{recent.code}} / Message: {{recent.message}}
-  </div>
-  <!-- ERROR END -->
-  <!-- THUMBNAILS START -->
-  <div class="masonry" masonry item-selector=".thumbnails" reload-on-resize reload-on-show masonry-options="{ percentPosition: true, transitionDuration: 0 }">
-    <div ng-repeat="img in recent.photos.photo.slice(0, photoStep)" masonry-brick class="thumbnails" ng-class="{'large-thumbnails': thumbsize === 'lg', 'small-thumbnails': thumbsize === 'sm'}">
-      <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_s.jpg" ng-click="thumbnailClick(img, $index)">
-    </div>
-  </div>
-  <!-- THUMBNAILS END -->
-  <!-- NAV START -->
-  <nav>
-    <ul class="pager" ng-hide="recent.photos.photo.length === 0">
-      <li>
-        <a ng-click="thumbnailsAdd()">
-          <span class="glyphicon glyphicon-plus"></span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- NAV END -->
-  flickr img
-  <flickr-img info="photoDetail">></flickr-img>
+</div>
+<!-- PHOTODETAIL END -->
+<!-- ERROR START -->
+<br>
+<div class="alert alert-danger" role="alert" ng-show="recent.stat == 'fail'">
+  <b>An error occurred</b>
+  <br> Code: {{recent.code}} / Message: {{recent.message}}
+</div>
+<!-- ERROR END -->
+<!-- THUMBNAILS START -->
+<div ng-repeat="img in thumbnailsShow.length !== 0 ? thumbnailsShow : thumbnailsAdd()" class="thumbnails" ng-class="{'large-thumbnails': thumbsize === 'lg', 'small-thumbnails': thumbsize === 'sm'}">
+  <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_m.jpg" ng-click="thumbnailClick(img, $index)">
+</div>
+<!-- THUMBNAILS END -->
+<!-- NAV START -->
+<nav>
+  <ul class="pager" ng-hide="recent.photos.photo.length === 0">
+    <li>
+      <a ng-click="thumbnailsAdd()">
+        <span class="glyphicon glyphicon-plus"></span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<!-- NAV END -->
+</div>
