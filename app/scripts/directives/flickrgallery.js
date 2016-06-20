@@ -17,31 +17,48 @@ angular.module('flickrportfolioApp')
 
       galleryData.then(function(data) {
 
-        scope.gallery[galleryID] = data.data;
+        scope.gallery = data.data;
 
       });
 
-      scope.gallery = scope.gallery || {
+      scope.photoDetail = null;
+      scope.photoDetailIndx = null;
 
-        thumbnailClick: function() {
-          // try {
-          // if (typeof scope.gallery.detailSet === 'function') {
-          // scope.gallery.detailSet(img);
-          // }
-          // } catch (e) {}
-        },
 
-        // toggleThumbsize: function() {
+      scope.thumbClick = function(img, ind) {
 
-        //   var currentSize = this.thumbsize;
+        scope.photoDetail = img;
 
-        //   this.thumbsize = (currentSize === 'lg') ? 'sm' : 'lg';
+        scope.photoDetailIndx = ind;
 
-        //   // NOT IDEAL
-        //   // https: //github.com/passy/angular-masonry/issues/71
+      };
 
-        //   scope.$root.$broadcast('masonry.reload');
-        // }
+      scope.detailClose = function() {
+        console.log('close');
+        scope.photoDetail = null;
+
+        scope.photoDetailIndx = null;
+
+      };
+
+      function photoDetailSet(ind) {
+
+        scope.photoDetail = scope.gallery.photoset.photo[ind];
+
+      }
+
+      scope.detailPrev = function() {
+
+        scope.photoDetailIndx--;
+
+        photoDetailSet(scope.photoDetailIndx);
+      };
+
+      scope.detailNext = function() {
+
+        scope.photoDetailIndx++;
+
+        photoDetailSet(scope.photoDetailIndx);
       };
 
     }
@@ -53,4 +70,5 @@ angular.module('flickrportfolioApp')
       },
       link: link
     };
+
   }]);

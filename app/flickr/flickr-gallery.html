@@ -1,5 +1,39 @@
-<div class="masonry" masonry item-selector=".thumbnails" reload-on-resize masonry-options="{ percentPosition: true, transitionDuration: 0 }">
-  <div  ng-repeat="img in gallery.photoset.photo" masonry-brick class="thumbnails" ng-class="{'large-thumbnails': gallery.thumbsize === 'lg', 'small-thumbnails': gallery.thumbsize === 'sm'}">
-    <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_m.jpg" ng-click="gallery.thumbnailClick(img, $index)">
+<!-- PHOTODETAIL START -->
+<div class="recent-detail-photo" ng-hide="photoDetail === null">
+  <flickr-img info="photoDetail"></flickr-img>
+  <div class="recent-detail-descrip">
+    {{photoDetail.title}} {{photoDetail.description._content}}
   </div>
+  <nav>
+    <ul class="pager">
+      <li>
+        <a ng-click="detailPrev()">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </li>
+      <li>
+        <a ng-click="detailClose()">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </li>
+      <li>
+        <a ng-click="detailNext()">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>
+<!-- PHOTODETAIL END -->
+<!-- ERROR START -->
+<br>
+<div class="alert alert-danger" role="alert" ng-show="gallery.stat == 'fail'">
+  <b>An error occurred</b>
+  <br> Code: {{gallery.code}} / Message: {{gallery.message}}
+</div>
+<!-- ERROR END -->
+<!-- THUMBNAILS START -->
+<div ng-repeat="img in gallery.photoset.photo" class="thumbnails">
+  <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_m.jpg" ng-click="thumbClick(img, $index)">
+</div>
+<!-- THUMBNAILS END -->

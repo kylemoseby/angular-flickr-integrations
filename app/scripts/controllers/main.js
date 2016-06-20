@@ -10,7 +10,8 @@
 angular.module('flickrportfolioApp')
   .controller('MainCtrl', ['$scope', 'restAPI', function($scope, $flickr) {
 
-    $scope.galleryID = '72157641683609583';
+    // $scope.galleryID = '72157641683609583';
+    $scope.galleryID = '72157665063123496';
 
     var photoData = new $flickr.getRecent('91631856@N00');
 
