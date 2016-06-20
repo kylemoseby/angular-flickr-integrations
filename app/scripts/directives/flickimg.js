@@ -13,7 +13,7 @@ angular.module('flickrportfolioApp')
       restrict: 'E',
       link: function(scope) {
 
-        function setWidthsdasdas() {
+        function imgSetWidth() {
           // MAKES TESTING HARD TO USE WINDOW FIX LATER
           var wdth = window.innerWidth;
 
@@ -35,11 +35,11 @@ angular.module('flickrportfolioApp')
           }
         }
 
-        setWidthsdasdas();
+        imgSetWidth();
 
         window.onresize = function() {
 
-          setWidthsdasdas();
+          imgSetWidth();
 
           scope.$digest();
         };

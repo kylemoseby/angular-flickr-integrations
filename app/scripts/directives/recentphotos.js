@@ -55,6 +55,7 @@ angular.module('flickrportfolioApp')
       };
 
       function photoDetailSet(ind) {
+
         scope.photoDetail = scope.recent.photos.photo[ind];
       }
 
