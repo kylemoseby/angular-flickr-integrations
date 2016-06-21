@@ -7,7 +7,7 @@
  * # flickrGallery
  */
 angular.module('flickrportfolioApp')
-  .directive('flickrGallery', ['restAPI', function($flickr) {
+  .directive('flickrAlbum', ['restAPI', function($flickr) {
 
     function link(scope) {
 
@@ -18,33 +18,28 @@ angular.module('flickrportfolioApp')
       galleryData.then(function(data) {
 
         scope.gallery = data.data;
-
       });
 
       scope.photoDetail = null;
       scope.photoDetailIndx = null;
-
 
       scope.thumbClick = function(img, ind) {
 
         scope.photoDetail = img;
 
         scope.photoDetailIndx = ind;
-
       };
 
       scope.detailClose = function() {
-        console.log('close');
+
         scope.photoDetail = null;
 
         scope.photoDetailIndx = null;
-
       };
 
       function photoDetailSet(ind) {
 
         scope.photoDetail = scope.gallery.photoset.photo[ind];
-
       }
 
       scope.detailPrev = function() {
@@ -64,7 +59,7 @@ angular.module('flickrportfolioApp')
     }
 
     return {
-      'templateUrl': 'flickr/flickr-gallery.html',
+      'templateUrl': 'flickr/flickr-album.html',
       scope: {
         flickrKey: '=flickrKey'
       },

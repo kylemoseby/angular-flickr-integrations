@@ -15,6 +15,7 @@ angular.module('flickrportfolioApp')
 
         function imgSetWidth() {
           // MAKES TESTING HARD TO USE WINDOW FIX LATER
+          // var wdth = element.innerWidth();
           var wdth = window.innerWidth;
 
           if (wdth > 1600) {
