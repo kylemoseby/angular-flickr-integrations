@@ -33,7 +33,9 @@
 </div>
 <!-- ERROR END -->
 <!-- THUMBNAILS START -->
-<div ng-repeat="img in gallery.photoset.photo" class="thumbnails">
-  <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_m.jpg" ng-click="thumbClick(img, $index)">
+<div masonry>
+  <div ng-repeat="img in gallery.photoset.photo" class="masonry-brick">
+    <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_m.jpg" ng-click="thumbClick(img, $index)">
+  </div>
 </div>
 <!-- THUMBNAILS END -->
