@@ -53,8 +53,8 @@ module.exports = function(grunt) {
       },
 
       styles: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'postcss']
+        files: ['style/{,*/}*.less'],
+        tasks: ['less', 'newer:copy:styles', 'postcss']
       },
 
       gruntfile: {
@@ -120,6 +120,17 @@ module.exports = function(grunt) {
         options: {
           open: true,
           base: '<%= yeoman.dist %>'
+        }
+      }
+    },
+
+    less: {
+      development: {
+        // options: {
+        // paths: ['assets/css']
+        // },
+        files: {
+          'app/styles/main.css': 'style/main.less'
         }
       }
     },
@@ -432,7 +443,6 @@ module.exports = function(grunt) {
         singleRun: true
       }
     }
-
 
   });
 

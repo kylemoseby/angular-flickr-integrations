@@ -1,8 +1,8 @@
 img {
   max-width: 100%;
 }
-
-
+.masonry-brick {
+  padding: 0 6px 6px 0;
+  overflow: hidden;
+}
 /* Responsive: Portrait tablets and up */
-
-@media screen and (min-width: 768px) {}
