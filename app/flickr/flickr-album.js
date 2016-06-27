@@ -18,16 +18,38 @@ angular.module('flickrportfolioApp')
       galleryData.then(function(data) {
 
         scope.gallery = data.data;
+
       });
 
       scope.photoDetail = null;
       scope.photoDetailIndx = null;
 
-      scope.thumbClick = function(img, ind) {
+      function photoDetailSet(ind) {
 
-        scope.photoDetail = img;
+        var newDetail = scope.gallery.photoset.photo[ind];
+
+        scope.photoDetail = newDetail;
+
+        // if (newDetail.hasOwnProperty('id')) {
+
+        // Call Flickr for image info
+        var imgInfo = $flickr.getImg(newDetail.id);
+
+        imgInfo.then(function(data) {
+
+          scope.detailInfo = data.data.photo;
+        });
+        // }
+      }
+
+      /*
+        ALBUM NAVIGATION
+      */
+      scope.thumbClick = function(ind) {
 
         scope.photoDetailIndx = ind;
+
+        photoDetailSet(ind);
       };
 
       scope.detailClose = function() {
@@ -36,11 +58,6 @@ angular.module('flickrportfolioApp')
 
         scope.photoDetailIndx = null;
       };
-
-      function photoDetailSet(ind) {
-
-        scope.photoDetail = scope.gallery.photoset.photo[ind];
-      }
 
       scope.detailPrev = function() {
 

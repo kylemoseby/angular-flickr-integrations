@@ -7,7 +7,7 @@
  * # flickImg
  */
 angular.module('flickrportfolioApp')
-  .directive('flickrImg', function() {
+  .directive('flickrImg', ['restAPI', function(restAPI) {
     return {
       templateUrl: 'flickr/flickr-img.html',
       restrict: 'E',
@@ -49,4 +49,4 @@ angular.module('flickrportfolioApp')
         img: '=info'
       }
     };
-  });
+  }]);

@@ -4,6 +4,24 @@
   <div class="recent-detail-descrip">
     {{photoDetail.title}} {{photoDetail.description._content}}
   </div>
+  <div class="detail-meta">
+    <ul class="list-unstyled">
+      <li><span class="glyphicon glyphicon-info-sign"></span>
+        <ul class="list-unstyled">
+          <li>{{detailInfo.dates.taken}}</li>
+          <li>Views: {{detailInfo.views}}</li>
+          <li><a ng-href="{{detailInfo.urls.url[0]['content']}}"><span class="glyphicon glyphicon-link"></span></a></li>
+          <li ng-show="detailInfo.tags.tag.length > 0">
+            <ul class="list-inline">
+              <li><strong>Tags:</strong></li>
+              <li ng-repeat="tag in detailInfo.tags.tag">{{tag['_content']}}</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <!-- <li><span class="glyphicon glyphicon-share-alt"></span></li> -->
+    </ul>
+  </div>
   <nav>
     <ul class="pager">
       <li ng-hide="photoDetailIndx === 0">
@@ -35,7 +53,7 @@
 <!-- THUMBNAILS START -->
 <div masonry>
   <div ng-repeat="img in gallery.photoset.photo" class="masonry-brick">
-    <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_m.jpg" ng-click="thumbClick(img, $index)">
+    <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_m.jpg" ng-click="thumbClick($index)">
   </div>
 </div>
 <!-- THUMBNAILS END -->
