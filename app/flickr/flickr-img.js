@@ -9,7 +9,10 @@
 angular.module('flickrportfolioApp')
   .directive('flickrImg', ['restAPI', function(restAPI) {
     return {
-      templateUrl: 'flickr/flickr-img.html',
+      templateUrl: function(element) {
+
+        return element.attr('new-view') || 'flickr/flickr-img.html';
+      },
       restrict: 'E',
       link: function(scope) {
 

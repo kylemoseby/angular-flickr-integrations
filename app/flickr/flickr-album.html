@@ -10,7 +10,7 @@
         <ul class="list-unstyled">
           <li>{{detailInfo.dates.taken}}</li>
           <li>Views: {{detailInfo.views}}</li>
-          <li><a ng-href="{{detailInfo.urls.url[0]['content']}}"><span class="glyphicon glyphicon-link"></span></a></li>
+          <li><a ng-href="{{detailInfo.urls.url[0]['_content']}}" target="_blank"><span class="glyphicon glyphicon-link"></span></a></li>
           <li ng-show="detailInfo.tags.tag.length > 0">
             <ul class="list-inline">
               <li><strong>Tags:</strong></li>

@@ -84,7 +84,10 @@ angular.module('flickrportfolioApp')
 
     return {
       link: link,
-      templateUrl: 'flickr/flickr-recent.html',
+      templateUrl: function(element) {
+
+        return element.attr('new-view') || 'flickr/flickr-recent.html';
+      },
       restrict: 'E',
       scope: {
         recent: '=flickrId',

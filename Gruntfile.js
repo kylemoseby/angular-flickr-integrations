@@ -311,9 +311,16 @@ module.exports = function(grunt) {
     //     }
     //   }
     // },
-    // concat: {
-    //   dist: {}
-    // },
+    concat: {
+      options: {
+        // stripBanners: true,
+        // banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */',
+      },
+      source: {
+        src: ['app/flickr/{,*/}*.js'],
+        dest: 'source/angular-flickr-integrations.js'
+      }
+    },
 
     imagemin: {
       dist: {
@@ -493,6 +500,10 @@ module.exports = function(grunt) {
     'usemin',
     'htmlmin'
   ]);
+
+  grunt.registerTask('source', [
+    'concat:source'
+  ])
 
   grunt.registerTask('default', [
     'newer:jshint',

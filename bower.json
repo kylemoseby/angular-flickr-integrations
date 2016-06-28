@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "homepage": "https://github.com/kylemoseby/angular-flickr-integrations",
   "license": "MIT",
+  "main": "./source/angular-flickr-integrations.js",
   "dependencies": {
     "angular": "^1.4.0",
     "bootstrap": "^3.2.0",

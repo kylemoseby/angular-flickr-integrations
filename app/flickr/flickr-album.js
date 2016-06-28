@@ -76,7 +76,10 @@ angular.module('flickrportfolioApp')
     }
 
     return {
-      'templateUrl': 'flickr/flickr-album.html',
+      templateUrl: function(element) {
+
+        return element.attr('new-view') || 'flickr/flickr-album.html';
+      },
       scope: {
         flickrKey: '=flickrKey'
       },
