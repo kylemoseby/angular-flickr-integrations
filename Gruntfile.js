@@ -503,7 +503,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('source', [
     'concat:source'
-  ])
+  ]);
 
   grunt.registerTask('default', [
     'newer:jshint',

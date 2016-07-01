@@ -11,7 +11,7 @@ angular.module('flickrportfolioApp')
 
     function link(scope) {
 
-      var galleryID = scope.flickrKey;
+      var galleryID = scope.albumId;
 
       var galleryData = new $flickr.getPhotoset(galleryID);
 
@@ -81,7 +81,7 @@ angular.module('flickrportfolioApp')
         return element.attr('new-view') || 'flickr/flickr-album.html';
       },
       scope: {
-        flickrKey: '=flickrKey'
+        albumId: '=albumId'
       },
       link: link
     };
