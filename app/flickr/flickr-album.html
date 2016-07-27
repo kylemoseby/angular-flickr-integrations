@@ -52,7 +52,7 @@
 <!-- ERROR END -->
 <!-- THUMBNAILS START -->
 <div masonry>
-  <div ng-repeat="img in gallery.photoset.photo" class="masonry-brick">
+  <div class="masonry-brick" ng-repeat="img in gallery.photoset.photo">
     <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_m.jpg" ng-click="thumbClick($index)">
   </div>
 </div>

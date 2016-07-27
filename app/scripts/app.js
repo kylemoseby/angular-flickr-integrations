@@ -8,8 +8,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
+    'wu.masonry',
     'mkm.flickr',
-    'wu.masonry'
   ])
   .config(function($routeProvider) {
     $routeProvider
