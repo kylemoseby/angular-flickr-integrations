@@ -53,8 +53,8 @@ module.exports = function(grunt) {
       },
 
       styles: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'postcss']
+        files: ['style/{,*/}*.less'],
+        tasks: ['less', 'newer:copy:styles', 'postcss']
       },
 
       gruntfile: {
@@ -120,6 +120,17 @@ module.exports = function(grunt) {
         options: {
           open: true,
           base: '<%= yeoman.dist %>'
+        }
+      }
+    },
+
+    less: {
+      development: {
+        // options: {
+        // paths: ['assets/css']
+        // },
+        files: {
+          'app/styles/main.css': 'style/main.less'
         }
       }
     },
@@ -300,9 +311,16 @@ module.exports = function(grunt) {
     //     }
     //   }
     // },
-    // concat: {
-    //   dist: {}
-    // },
+    concat: {
+      options: {
+        // stripBanners: true,
+        // banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */',
+      },
+      source: {
+        src: ['app/flickr/{,*/}*.js'],
+        dest: 'source/angular-flickr-integrations.js'
+      }
+    },
 
     imagemin: {
       dist: {
@@ -433,7 +451,6 @@ module.exports = function(grunt) {
       }
     }
 
-
   });
 
 
@@ -482,6 +499,10 @@ module.exports = function(grunt) {
     'filerev',
     'usemin',
     'htmlmin'
+  ]);
+
+  grunt.registerTask('source', [
+    'concat:source'
   ]);
 
   grunt.registerTask('default', [
