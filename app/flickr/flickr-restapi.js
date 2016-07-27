@@ -7,7 +7,7 @@
  * # restAPI
  * Service in the flickrportfolioApp.
  */
-angular.module('flickrportfolioApp')
+angular.module('flickrportfolioApp.rest')
   .service('restAPI', ['$http', '$api', function($http, $api) {
 
     var apiKey = $api.flickr;

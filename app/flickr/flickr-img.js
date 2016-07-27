@@ -6,7 +6,7 @@
  * @description
  * # flickImg
  */
-angular.module('flickrportfolioApp')
+angular.module('flickrportfolioApp.img')
   .directive('flickrImg', ['restAPI', function(restAPI) {
     return {
       templateUrl: function(element) {

@@ -1,23 +1,15 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name flickrportfolioApp
- * @description
- * # flickrportfolioApp
- *
- * Main module of the application.
- */
 angular
-  .module('flickrportfolioApp', [
+  .module('demoApp', [
+    'flickrportfolioApp',
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'wu.masonry',
-    'API'
+    'wu.masonry'
   ])
   .config(function($routeProvider) {
     $routeProvider

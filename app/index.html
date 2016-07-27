@@ -17,7 +17,7 @@
   <!-- endbuild -->
 </head>
 
-<body ng-app="flickrportfolioApp">
+<body ng-app="demoApp">
   <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -118,15 +118,16 @@
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
-  <script src="scripts/app.js"></script>
-  <script src="scripts/api_key.js"></script>
-  <script src="scripts/controllers/main.js"></script>
-  <script src="scripts/controllers/about.js"></script>
-  <script src="flickr/flickr-restapi.js"></script>
+  <!-- <script src="flickr/flickr-restapi.js"></script>
   <script src="flickr/flickr-recent.js"></script>
   <script src="flickr/flickr-album.js"></script>
   <script src="flickr/flickr-img.js"></script>
   <script src="scripts/directives/twitterbutton.js"></script>
+   -->
+  <script src="scripts/api_key.js"></script>
+  <script type="source/angular-flickr-integrations.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/main.js"></script>
   <!-- endbuild -->
 </body>
 

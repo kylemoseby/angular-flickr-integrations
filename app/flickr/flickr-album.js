@@ -6,7 +6,7 @@
  * @description
  * # flickrGallery
  */
-angular.module('flickrportfolioApp')
+angular.module('flickrportfolioApp.album')
   .directive('flickrAlbum', ['restAPI', function($flickr) {
 
     function link(scope) {

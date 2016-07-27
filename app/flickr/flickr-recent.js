@@ -6,7 +6,7 @@
  * @description
  * # recentPhotos
  */
-angular.module('flickrportfolioApp')
+angular.module('flickrportfolioApp.recent')
   .directive('recentPhotos', [function() {
     function link(scope) {
 

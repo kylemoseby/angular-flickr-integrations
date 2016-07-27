@@ -1,17 +1,11 @@
 'use strict';
 
-/**
- * @ngdoc directive
- * @name flickrportfolioApp.directive:flickrGallery
- * @description
- * # flickrGallery
- */
-angular.module('flickrportfolioApp')
+angular.module('flickrportfolioApp', ['API'])
   .directive('flickrAlbum', ['restAPI', function($flickr) {
 
     function link(scope) {
 
-      var galleryID = scope.flickrKey;
+      var galleryID = scope.albumId;
 
       var galleryData = new $flickr.getPhotoset(galleryID);
 
@@ -76,27 +70,22 @@ angular.module('flickrportfolioApp')
     }
 
     return {
-      'templateUrl': 'flickr/flickr-album.html',
+      templateUrl: function(element) {
+
+        return element.attr('new-view') || 'flickr/flickr-album.html';
+      },
       scope: {
-        flickrKey: '=flickrKey'
+        albumId: '=albumId'
       },
       link: link
     };
-
-  }]);
-
-'use strict';
-
-/**
- * @ngdoc directive
- * @name flickrportfolioApp.directive:flickImg
- * @description
- * # flickImg
- */
-angular.module('flickrportfolioApp')
+  }])
   .directive('flickrImg', ['restAPI', function(restAPI) {
     return {
-      templateUrl: 'flickr/flickr-img.html',
+      templateUrl: function(element) {
+
+        return element.attr('new-view') || 'flickr/flickr-img.html';
+      },
       restrict: 'E',
       link: function(scope) {
 
@@ -136,17 +125,7 @@ angular.module('flickrportfolioApp')
         img: '=info'
       }
     };
-  }]);
-
-'use strict';
-
-/**
- * @ngdoc directive
- * @name flickrportfolioApp.directive:recentPhotos
- * @description
- * # recentPhotos
- */
-angular.module('flickrportfolioApp')
+  }])
   .directive('recentPhotos', [function() {
     function link(scope) {
 
@@ -224,7 +203,10 @@ angular.module('flickrportfolioApp')
 
     return {
       link: link,
-      templateUrl: 'flickr/flickr-recent.html',
+      templateUrl: function(element) {
+
+        return element.attr('new-view') || 'flickr/flickr-recent.html';
+      },
       restrict: 'E',
       scope: {
         recent: '=flickrId',
@@ -232,18 +214,7 @@ angular.module('flickrportfolioApp')
         step: '=step'
       }
     };
-  }]);
-
-'use strict';
-
-/**
- * @ngdoc service
- * @name flickrportfolioApp.restAPI
- * @description
- * # restAPI
- * Service in the flickrportfolioApp.
- */
-angular.module('flickrportfolioApp')
+  }])
   .service('restAPI', ['$http', '$api', function($http, $api) {
 
     var apiKey = $api.flickr;
@@ -301,5 +272,4 @@ angular.module('flickrportfolioApp')
       getRecent: _getRecent,
       getImg: _getImg
     };
-
   }]);
