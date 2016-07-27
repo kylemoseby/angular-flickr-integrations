@@ -3,13 +3,10 @@
 angular
   .module('demoApp', [
     'ngAnimate',
-    'ngCookies',
-    'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'wu.masonry',
-    'mkm.flickr',
+    'mkm.flickr'
   ])
   .config(function($routeProvider) {
     $routeProvider
