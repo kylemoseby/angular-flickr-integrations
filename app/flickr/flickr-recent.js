@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name flickrportfolioApp.directive:recentPhotos
+ * @name mkm.flickr.directive:recentPhotos
  * @description
  * # recentPhotos
  */
-angular.module('flickrportfolioApp.recent')
+angular.module('mkm.flickr')
   .directive('recentPhotos', [function() {
     function link(scope) {
 

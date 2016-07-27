@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name flickrportfolioApp.directive:flickrGallery
+ * @name mkm.flickr.directive:flickrGallery
  * @description
  * # flickrGallery
  */
-angular.module('flickrportfolioApp.album')
+angular.module('mkm.flickr')
   .directive('flickrAlbum', ['restAPI', function($flickr) {
 
     function link(scope) {

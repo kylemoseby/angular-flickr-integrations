@@ -1,13 +1,18 @@
+// (function() {
 'use strict';
 
 /**
  * @ngdoc service
- * @name flickrportfolioApp.restAPI
+ * @name mkm.flickr.restAPI
  * @description
  * # restAPI
- * Service in the flickrportfolioApp.
+ * Service in the mkm.flickr.
  */
-angular.module('flickrportfolioApp.rest')
+angular.module('mkm.flickr', [
+    'ngRoute',
+    'API',
+    'wu.masonry'
+  ])
   .service('restAPI', ['$http', '$api', function($http, $api) {
 
     var apiKey = $api.flickr;
@@ -67,3 +72,4 @@ angular.module('flickrportfolioApp.rest')
     };
 
   }]);
+// }());

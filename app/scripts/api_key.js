@@ -7,7 +7,7 @@
  */
 
 
-angular.module('API', [])
+angular.module('API', ['ngRoute'])
   .constant('$api', {
     flickr: 'cf8f1cf4fdd37bce0498531da5f31ed1'
   });

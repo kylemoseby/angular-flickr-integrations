@@ -2,13 +2,13 @@
 
 angular
   .module('demoApp', [
-    'flickrportfolioApp',
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch',
+    'mkm.flickr',
     'wu.masonry'
   ])
   .config(function($routeProvider) {

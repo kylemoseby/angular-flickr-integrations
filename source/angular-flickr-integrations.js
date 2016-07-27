@@ -1,6 +1,10 @@
 'use strict';
 
-angular.module('flickrportfolioApp', ['API'])
+angular.module('flickrPortfolio', [
+    'ngRoute',
+    'API',
+    'wu.masonry'
+  ])
   .directive('flickrAlbum', ['restAPI', function($flickr) {
 
     function link(scope) {
