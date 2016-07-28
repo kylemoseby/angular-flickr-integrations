@@ -7,7 +7,7 @@
   width: 100%;
 }
 #intro {
-  background: url(../images/selfloss.jpg);
+  background: url(../images/selfloss.jpg) center;
   width: 100%;
   color: #eeeeee;
   padding: 5vh 0;
@@ -20,6 +20,15 @@
   -webkit-text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85);
   -moz-text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85);
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85);
+}
+#reykjavik {
+  background: url(../images/reykjavik.jpg) center;
+  height: 175px;
+}
+#the-end {
+  background: url(../images/the-end.jpg) center;
+  height: 675px;
+  padding-top: 6px;
 }
 .recent-detail-photo {
   margin: auto 6px 6px auto;
