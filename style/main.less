@@ -1,12 +1,11 @@
 @import "variables.less";
-.well img {
-  max-width: 100%;
-  max-height: 75vh;
-}
-
 .masonry-brick {
   padding: 0 @padding-base-vertical @padding-base-vertical 0;
   overflow: hidden;
+  width: 33%;
+  img {
+    width: 100%;
+  }
 }
 
 #intro {
@@ -17,4 +16,8 @@
 
 /* Responsive: Portrait tablets and up */
 
-@media screen and (min-width: 768px) {}
+@media screen and (min-width: 768px) {
+  .masonry-brick {
+    width: 20%;
+  }
+}

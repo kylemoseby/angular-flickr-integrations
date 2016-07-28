@@ -1,13 +1,18 @@
-.well img {
-  max-width: 100%;
-  max-height: 75vh;
-}
 .masonry-brick {
   padding: 0 6px 6px 0;
   overflow: hidden;
+  width: 33%;
+}
+.masonry-brick img {
+  width: 100%;
 }
 #intro {
   background-image: "https://c2.staticflickr.com/4/3901/14486476768_a229bfc2ad_k.jpg";
   background-repeat: no-repeat;
 }
 /* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .masonry-brick {
+    width: 20%;
+  }
+}
