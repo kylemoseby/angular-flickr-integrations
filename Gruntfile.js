@@ -321,7 +321,12 @@ module.exports = function(grunt) {
         // banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */',
       },
       source: {
-        src: ['app/flickr/{,*/}*.js'],
+        src: [
+          'app/flickr/flickr-restapi.js',
+          'app/flickr/flickr-album.js',
+          'app/flickr/flickr-img.js',
+          'app/flickr/flickr-recent.js',
+        ],
         dest: 'source/angular-flickr-integrations.js'
       }
     },
