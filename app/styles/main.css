@@ -1,13 +1,54 @@
-.well img {
-  max-width: 100%;
-  max-height: 75vh;
-}
 .masonry-brick {
   padding: 0 6px 6px 0;
   overflow: hidden;
+  width: 50%;
+}
+.masonry-brick img {
+  width: 100%;
 }
 #intro {
-  background-image: "https://c2.staticflickr.com/4/3901/14486476768_a229bfc2ad_k.jpg";
-  background-repeat: no-repeat;
+  background: url(../images/selfloss.jpg);
+  width: 100%;
+  color: #eeeeee;
+  padding: 5vh 0;
 }
-/* Responsive: Portrait tablets and up */
+#intro a {
+  color: #eeeeee;
+}
+#intro .creative-commons {
+  font-size: 12px;
+  -webkit-text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85);
+  -moz-text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85);
+}
+.recent-detail-photo {
+  margin: auto 6px 6px auto;
+}
+.recent-detail-photo img {
+  max-width: 100%;
+  max-height: 75vh;
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .masonry-brick {
+    width: 33%;
+  }
+  #intro {
+    padding: 7vh 0;
+  }
+}
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .masonry-brick {
+    width: 20%;
+  }
+  #intro {
+    padding: 12vh 0;
+  }
+}
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  #intro {
+    padding: 18vh 0;
+  }
+}

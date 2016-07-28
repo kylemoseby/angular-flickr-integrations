@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name flickrportfolioApp.directive:flickImg
+ * @name mkm.flickr.directive:flickImg
  * @description
  * # flickImg
  */
-angular.module('flickrportfolioApp')
+angular.module('mkm.flickr')
   .directive('flickrImg', ['restAPI', function(restAPI) {
     return {
       templateUrl: function(element) {

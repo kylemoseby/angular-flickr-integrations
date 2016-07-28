@@ -40,7 +40,10 @@ module.exports = function(grunt) {
       },
 
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: [
+          '<%= yeoman.app %>/scripts/{,*/}*.js',
+          '<%= yeoman.app %>/flickr/{,*/}*.js'
+        ],
         tasks: ['newer:jshint:all', 'newer:jscs:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -144,7 +147,8 @@ module.exports = function(grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%= yeoman.app %>/scripts/{,*/}*.js',
+          '<%= yeoman.app %>/flickr/{,*/}*.js'
         ]
       },
       test: {
@@ -302,22 +306,35 @@ module.exports = function(grunt) {
     //     }
     //   }
     // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
+    uglify: {
+      //   dist: {
+      //     files: {
+      //       '<%= yeoman.dist %>/scripts/scripts.js': [
+      //         '<%= yeoman.dist %>/scripts/scripts.js'
+      //       ]
+      //     }
+      //   }
+      source: {
+        files: {
+          'source/angular-flickr-integrations.js': [
+            'source/angular-flickr-integrations.js'
+          ]
+        }
+      }
+    },
+
     concat: {
       options: {
         // stripBanners: true,
         // banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */',
       },
       source: {
-        src: ['app/flickr/{,*/}*.js'],
+        src: [
+          'app/flickr/flickr-restapi.js',
+          'app/flickr/flickr-album.js',
+          'app/flickr/flickr-img.js',
+          'app/flickr/flickr-recent.js',
+        ],
         dest: 'source/angular-flickr-integrations.js'
       }
     },
@@ -358,13 +375,27 @@ module.exports = function(grunt) {
           src: ['*.html'],
           dest: '<%= yeoman.dist %>'
         }]
+      },
+      flickrView: {
+        options: {
+          collapseWhitespace: true,
+          conservativeCollapse: true,
+          collapseBooleanAttributes: true,
+          removeCommentsFromCDATA: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.dist %>/flickr',
+          src: ['*.html'],
+          dest: '<%= yeoman.dist %>/flickr'
+        }]
       }
     },
 
     ngtemplates: {
       dist: {
         options: {
-          module: 'flickrportfolioApp',
+          module: 'demoApp',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
@@ -415,9 +446,19 @@ module.exports = function(grunt) {
           src: ['generated/*']
         }, {
           expand: true,
-          cwd: 'bower_components/bootstrap/dist',
+          cwd: '<%= yeoman.app %>',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: '<%= yeoman.app %>/flickr',
+          dest: '<%= yeoman.dist %>/flickr',
+          src: '{,*/}*.html'
+        }, {
+          expand: true,
+          cwd: 'bower_components/bootstrap/fonts',
+          dest: '<%= yeoman.dist %>/fonts',
+          src: '{,*/}*'
         }]
       },
       styles: {
@@ -461,7 +502,7 @@ module.exports = function(grunt) {
 
     grunt.task.run([
       'clean:server',
-      'wiredep',
+      // 'wiredep',
       'concurrent:server',
       'postcss:server',
       'connect:livereload',
@@ -476,7 +517,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-    'wiredep',
+    // 'wiredep',
     'concurrent:test',
     'postcss',
     'connect:test',
@@ -485,7 +526,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'wiredep',
+    // 'wiredep',
     'useminPrepare',
     'concurrent:dist',
     'postcss',
@@ -502,7 +543,8 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('source', [
-    'concat:source'
+    'concat:source',
+    'uglify:source'
   ]);
 
   grunt.registerTask('default', [
