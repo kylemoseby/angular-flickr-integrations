@@ -322,6 +322,7 @@ module.exports = function(grunt) {
         }
       }
     },
+
     concat: {
       options: {
         // stripBanners: true,

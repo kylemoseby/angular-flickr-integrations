@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc function
- * @name flickrportfolioApp.controller:MainCtrl
+ * @name demoApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the flickrportfolioApp
+ * Controller of the demoApp
  */
 angular.module('demoApp')
   .controller('MainCtrl', ['$scope', function($scope) {
