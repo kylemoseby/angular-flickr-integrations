@@ -375,6 +375,20 @@ module.exports = function(grunt) {
           src: ['*.html'],
           dest: '<%= yeoman.dist %>'
         }]
+      },
+      flickrView: {
+        options: {
+          collapseWhitespace: true,
+          conservativeCollapse: true,
+          collapseBooleanAttributes: true,
+          removeCommentsFromCDATA: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.dist %>/flickr',
+          src: ['*.html'],
+          dest: '<%= yeoman.dist %>/flickr'
+        }]
       }
     },
 
@@ -432,9 +446,19 @@ module.exports = function(grunt) {
           src: ['generated/*']
         }, {
           expand: true,
-          cwd: 'bower_components/bootstrap/dist',
+          cwd: '<%= yeoman.app %>',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: '<%= yeoman.app %>/flickr',
+          dest: '<%= yeoman.dist %>/flickr',
+          src: '{,*/}*.html'
+        }, {
+          expand: true,
+          cwd: 'bower_components/bootstrap/fonts',
+          dest: '<%= yeoman.dist %>/fonts',
+          src: '{,*/}*'
         }]
       },
       styles: {
