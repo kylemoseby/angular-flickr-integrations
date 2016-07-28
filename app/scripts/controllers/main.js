@@ -8,7 +8,7 @@
  * Controller of the flickrportfolioApp
  */
 angular.module('demoApp')
-  .controller('MainCtrl', ['$scope', 'restAPI', function($scope) {
+  .controller('MainCtrl', ['$scope', function($scope) {
 
     $scope.galleryID = '72157641683609583';
 

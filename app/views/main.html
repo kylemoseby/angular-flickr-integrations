@@ -32,28 +32,54 @@
     <h2>Setup</h2>
     <p>Because of the Masonry pluging the order in which depecdencies are loaded makes a difference. Specifically the angular-masonry plugin. Please load in the following order:</p>
     <!-- ESCAPED DEPENDENCIES HTML -->
-    <pre>
-&lt;script src=&quot;bower_components/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/angular/angular.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/bootstrap/dist/js/bootstrap.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/angular-animate/angular-animate.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/angular-resource/angular-resource.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/angular-route/angular-route.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/angular-sanitize/angular-sanitize.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/angular-touch/angular-touch.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/get-size/get-size.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/jquery-bridget/jquery-bridget.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/ev-emitter/ev-emitter.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/desandro-matches-selector/matches-selector.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/fizzy-ui-utils/utils.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/outlayer/item.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/outlayer/outlayer.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/masonry/masonry.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/imagesloaded/imagesloaded.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;bower_components/angular-masonry/angular-masonry.js&quot;&gt;&lt;/script&gt;</pre>
-    <p>Specifically &lt;script src=&quot;bower_components/outlayer/item.js&quot;&gt;&lt;/script&gt; needs to be loaded before &lt;script src=&quot;bower_components/outlayer/outlayer.js&quot;&gt;&lt;/script&gt;. Also &lt;script src=&quot;bower_components/jquery-bridget/jquery-bridget.js&quot;&gt;&lt;/script&gt; needs to come before &lt;script src=&quot;bower_components/ev-emitter/ev-emitter.js&quot;&gt;&lt;/script&gt;
-    </p>
-    <p>Include the file "source/angular-flickr-integrations.js" found in the root of this project. Individual js files can be found at "app/flick/flickr-***.js"</p>
+    <pre>  &lt;script src=&quot;bower_components/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/angular/angular.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/bootstrap/dist/js/bootstrap.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/angular-animate/angular-animate.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/angular-resource/angular-resource.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/angular-route/angular-route.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/angular-sanitize/angular-sanitize.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/angular-touch/angular-touch.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/get-size/get-size.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/jquery-bridget/jquery-bridget.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/ev-emitter/ev-emitter.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/desandro-matches-selector/matches-selector.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/fizzy-ui-utils/utils.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/outlayer/item.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/outlayer/outlayer.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/masonry/masonry.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/imagesloaded/imagesloaded.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;bower_components/angular-masonry/angular-masonry.js&quot;&gt;&lt;/script&gt;</pre>
+    <div class="alert alert-info" role="alert">
+      <p>Specifically <code>&quot;/outlayer/item.js&quot;</code> needs to be loaded before <code>&quot;/outlayer/outlayer.js&quot;</code>.&nbsp;&nbsp;Also <code>&quot;/jquery-bridget/jquery-bridget.js&quot;</code> needs to come before <code>&quot;/ev-emitter/ev-emitter.js&quot;</code>.
+      </p>
+    </div>
+    <div class="alert alert-warning" role="alert">
+      <p>If you are using Bower to manage your dependencies you may have to manually add/override <code>&quot;/outlayer/item.js&quot;</code>. For more info see <a href="https://github.com/metafizzy/outlayer/issues/33" target="_blank">here</a>.</p>
+    </div>
+    <p>Include the file "source/angular-flickr-integrations.js" found in the root of this project. Individual js files can be found at "app/flick/flickr-***.js". Then load the module <code>mkm.flickr</code> in your app.</p>
+    <pre>'use strict';
+
+angular
+  .module('demoApp', [
+    'ngAnimate',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch',
+    'mkm.flickr'
+  ])
+  .config(function($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });
+</pre>
     <h3>Views</h3>
     <p>Each directive has one HTML file associated with it. The default view location is /flickr/flickr-****.html. This can be overwritten using the "new-view".</p>
     <pre>&lt;flickr-album album-id=&quot;foo&quot; new-view=&quot;bar/view.html&quot;&gt;&lt;/flickr-album&gt;</pre>

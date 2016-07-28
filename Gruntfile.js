@@ -306,15 +306,22 @@ module.exports = function(grunt) {
     //     }
     //   }
     // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
+    uglify: {
+      //   dist: {
+      //     files: {
+      //       '<%= yeoman.dist %>/scripts/scripts.js': [
+      //         '<%= yeoman.dist %>/scripts/scripts.js'
+      //       ]
+      //     }
+      //   }
+      source: {
+        files: {
+          'source/angular-flickr-integrations.js': [
+            'source/angular-flickr-integrations.js'
+          ]
+        }
+      }
+    },
     concat: {
       options: {
         // stripBanners: true,
@@ -470,7 +477,7 @@ module.exports = function(grunt) {
 
     grunt.task.run([
       'clean:server',
-      'wiredep',
+      // 'wiredep',
       'concurrent:server',
       'postcss:server',
       'connect:livereload',
@@ -485,7 +492,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-    'wiredep',
+    // 'wiredep',
     'concurrent:test',
     'postcss',
     'connect:test',
@@ -494,7 +501,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'wiredep',
+    // 'wiredep',
     'useminPrepare',
     'concurrent:dist',
     'postcss',
@@ -511,7 +518,8 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('source', [
-    'concat:source'
+    'concat:source',
+    'uglify:source'
   ]);
 
   grunt.registerTask('default', [

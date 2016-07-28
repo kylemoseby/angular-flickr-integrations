@@ -17,8 +17,7 @@ angular.module('mkm.flickr')
       scope.recent = [];
 
       scope.photoStep = scope.photoStep || 5;
-
-      scope.count = scope.countInit - scope.photoStep || 0;
+      scope.photoCount = scope.countInit - scope.photoStep || 0;
 
       var photoData = new $flickr.getRecent(scope.flickrID);
 
@@ -32,9 +31,9 @@ angular.module('mkm.flickr')
 
       scope.thumbnailsAdd = function() {
 
-        scope.count += scope.photoStep;
+        scope.photoCount += scope.photoStep;
 
-        scope.thumbnailsShow = scope.recent.slice(0, scope.count);
+        scope.thumbnailsShow = scope.recent.slice(0, scope.photoCount);
       };
 
       scope.thumbnailClick = function(img, ind) {
