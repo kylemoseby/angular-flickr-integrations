@@ -1,10 +1,12 @@
 'use strict';
 
-angular.module('flickrPortfolio', [
-    'ngRoute',
-    'API',
-    'wu.masonry'
-  ])
+/**
+ * @ngdoc directive
+ * @name mkm.flickr.directive:flickrGallery
+ * @description
+ * # flickrGallery
+ */
+angular.module('mkm.flickr')
   .directive('flickrAlbum', ['restAPI', function($flickr) {
 
     function link(scope) {
@@ -83,7 +85,18 @@ angular.module('flickrPortfolio', [
       },
       link: link
     };
-  }])
+
+  }]);
+
+'use strict';
+
+/**
+ * @ngdoc directive
+ * @name mkm.flickr.directive:flickImg
+ * @description
+ * # flickImg
+ */
+angular.module('mkm.flickr')
   .directive('flickrImg', ['restAPI', function(restAPI) {
     return {
       templateUrl: function(element) {
@@ -129,45 +142,45 @@ angular.module('flickrPortfolio', [
         img: '=info'
       }
     };
-  }])
-  .directive('recentPhotos', [function() {
+  }]);
+
+'use strict';
+
+/**
+ * @ngdoc directive
+ * @name mkm.flickr.directive:recentPhotos
+ * @description
+ * # recentPhotos
+ */
+angular.module('mkm.flickr')
+  .directive('recentPhotos', ['restAPI', function($flickr) {
     function link(scope) {
 
       scope.detailIndex = null;
       scope.photoDetail = null;
       scope.thumbnailsShow = [];
-      scope.recent = scope.recent || null;
 
-      scope.photoCount = scope.photoCount || 0;
+      scope.recent = [];
+
       scope.photoStep = scope.photoStep || 5;
 
-      scope.thumbsize = 'lg'; // 'sm'
+      scope.count = scope.countInit - scope.photoStep || 0;
 
+      var photoData = new $flickr.getRecent(scope.flickrID);
 
-      scope.toggleThumbsize = function() {
+      photoData.then(function(data) {
 
-        var currentSize = this.thumbsize;
+        scope.recent = data.data.photos.photo;
 
-        this.thumbsize = (currentSize === 'lg') ? 'sm' : 'lg';
-      };
+        scope.thumbnailsAdd();
+      });
 
-      scope.thumbnailsInit = function() {
-
-        if (scope.recent !== null && scope.photoCount === 0) {
-
-          return true;
-
-        } else {
-
-          return false;
-        }
-      };
 
       scope.thumbnailsAdd = function() {
 
-        scope.photoCount += scope.photoStep;
+        scope.count += scope.photoStep;
 
-        scope.thumbnailsShow = scope.recent.photos.photo.slice(0, scope.photoCount);
+        scope.thumbnailsShow = scope.recent.slice(0, scope.count);
       };
 
       scope.thumbnailClick = function(img, ind) {
@@ -179,7 +192,7 @@ angular.module('flickrPortfolio', [
 
       function photoDetailSet(ind) {
 
-        scope.photoDetail = scope.recent.photos.photo[ind];
+        scope.photoDetail = scope.recent[ind];
       }
 
       scope.detailNext = function() {
@@ -213,12 +226,28 @@ angular.module('flickrPortfolio', [
       },
       restrict: 'E',
       scope: {
-        recent: '=flickrId',
-        count: '=count',
+        flickrID: '=flickrId',
+        countInit: '=count',
         step: '=step'
       }
     };
-  }])
+  }]);
+
+// (function() {
+'use strict';
+
+/**
+ * @ngdoc service
+ * @name mkm.flickr.restAPI
+ * @description
+ * # restAPI
+ * Service in the mkm.flickr.
+ */
+angular.module('mkm.flickr', [
+    'ngRoute',
+    'API',
+    'wu.masonry'
+  ])
   .service('restAPI', ['$http', '$api', function($http, $api) {
 
     var apiKey = $api.flickr;
@@ -276,4 +305,6 @@ angular.module('flickrPortfolio', [
       getRecent: _getRecent,
       getImg: _getImg
     };
+
   }]);
+// }());
