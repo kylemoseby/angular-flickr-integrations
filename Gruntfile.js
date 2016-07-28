@@ -381,7 +381,7 @@ module.exports = function(grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'flickrportfolioApp',
+          module: 'demoApp',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },

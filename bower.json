@@ -1,5 +1,5 @@
 {
-  "name": "flickrportfolio",
+  "name": "Angular Flickr Integrations",
   "description": "Collection of services and directives that use Flickr's REST API",
   "version": "1.0.0",
   "homepage": "https://github.com/kylemoseby/angular-flickr-integrations",
@@ -19,7 +19,7 @@
     "angular-mocks": "^1.4.0"
   },
   "appPath": "app",
-  "moduleName": "flickrportfolioApp",
+  "moduleName": "demoApp",
   "overrides": {
     "bootstrap": {
       "main": [
