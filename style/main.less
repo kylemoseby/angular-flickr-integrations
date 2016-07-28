@@ -2,7 +2,7 @@
 .masonry-brick {
   padding: 0 @padding-base-vertical @padding-base-vertical 0;
   overflow: hidden;
-  width: 33%;
+  width: 50%;
   img {
     width: 100%;
   }
@@ -14,10 +14,24 @@
 }
 
 
-/* Responsive: Portrait tablets and up */
+/* Small devices (tablets, 768px and up) */
 
-@media screen and (min-width: 768px) {
+@media (min-width: @screen-sm-min) {
+  .masonry-brick {
+    width: 33%;
+  }
+}
+
+
+/* Medium devices (desktops, 992px and up) */
+
+@media (min-width: @screen-md-min) {
   .masonry-brick {
     width: 20%;
   }
 }
+
+
+/* Large devices (large desktops, 1200px and up) */
+
+@media (min-width: @screen-lg-min) {}

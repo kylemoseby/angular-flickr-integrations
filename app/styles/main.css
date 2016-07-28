@@ -1,7 +1,7 @@
 .masonry-brick {
   padding: 0 6px 6px 0;
   overflow: hidden;
-  width: 33%;
+  width: 50%;
 }
 .masonry-brick img {
   width: 100%;
@@ -10,9 +10,16 @@
   background-image: "https://c2.staticflickr.com/4/3901/14486476768_a229bfc2ad_k.jpg";
   background-repeat: no-repeat;
 }
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .masonry-brick {
+    width: 33%;
+  }
+}
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
   .masonry-brick {
     width: 20%;
   }
 }
+/* Large devices (large desktops, 1200px and up) */

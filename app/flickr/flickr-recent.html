@@ -35,10 +35,11 @@
 <!-- ERROR END -->
 <!-- THUMBNAILS START -->
 <div masonry>
-  <div ng-repeat="img in thumbnailsInit() ? thumbnailsAdd(): thumbnailsShow" class="masonry-brick">
+  <div ng-repeat="img in thumbnailsShow" class="masonry-brick">
     <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_m.jpg" ng-click="thumbnailClick(img, $index)">
   </div>
 </div>
+{{count}}
 <!-- THUMBNAILS END -->
 <!-- NAV START -->
 <nav>

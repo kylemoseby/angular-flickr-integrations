@@ -7,44 +7,34 @@
  * # recentPhotos
  */
 angular.module('mkm.flickr')
-  .directive('recentPhotos', [function() {
+  .directive('recentPhotos', ['restAPI', function($flickr) {
     function link(scope) {
 
       scope.detailIndex = null;
       scope.photoDetail = null;
       scope.thumbnailsShow = [];
-      scope.recent = scope.recent || null;
 
-      scope.photoCount = scope.photoCount || 0;
+      scope.recent = [];
+
       scope.photoStep = scope.photoStep || 5;
 
-      scope.thumbsize = 'lg'; // 'sm'
+      scope.count = scope.countInit - scope.photoStep || 0;
 
+      var photoData = new $flickr.getRecent(scope.flickrID);
 
-      scope.toggleThumbsize = function() {
+      photoData.then(function(data) {
 
-        var currentSize = this.thumbsize;
+        scope.recent = data.data.photos.photo;
 
-        this.thumbsize = (currentSize === 'lg') ? 'sm' : 'lg';
-      };
+        scope.thumbnailsAdd();
+      });
 
-      scope.thumbnailsInit = function() {
-
-        if (scope.recent !== null && scope.photoCount === 0) {
-
-          return true;
-
-        } else {
-
-          return false;
-        }
-      };
 
       scope.thumbnailsAdd = function() {
 
-        scope.photoCount += scope.photoStep;
+        scope.count += scope.photoStep;
 
-        scope.thumbnailsShow = scope.recent.photos.photo.slice(0, scope.photoCount);
+        scope.thumbnailsShow = scope.recent.slice(0, scope.count);
       };
 
       scope.thumbnailClick = function(img, ind) {
@@ -56,7 +46,7 @@ angular.module('mkm.flickr')
 
       function photoDetailSet(ind) {
 
-        scope.photoDetail = scope.recent.photos.photo[ind];
+        scope.photoDetail = scope.recent[ind];
       }
 
       scope.detailNext = function() {
@@ -90,8 +80,8 @@ angular.module('mkm.flickr')
       },
       restrict: 'E',
       scope: {
-        recent: '=flickrId',
-        count: '=count',
+        flickrID: '=flickrId',
+        countInit: '=count',
         step: '=step'
       }
     };
