@@ -6,6 +6,7 @@
 .masonry-brick img {
   width: 100%;
 }
+/*  INTRO PAGE  */
 #intro {
   background: url(../images/selfloss.jpg) center;
   width: 100%;
@@ -14,6 +15,12 @@
 }
 #intro a {
   color: #eeeeee;
+}
+#intro .icon-github {
+  font-size: 29px;
+  position: relative;
+  top: 8px;
+  margin-right: 12px;
 }
 #intro .creative-commons {
   font-size: 12px;
@@ -24,19 +31,45 @@
 #reykjavik {
   background: url(../images/reykjavik.jpg) center;
   height: 175px;
+  color: #eeeeee;
+  padding: 36px 12px;
 }
 #the-end {
   background: url(../images/the-end.jpg) center;
   height: 675px;
   padding-top: 6px;
 }
+#the-end .icon-github {
+  color: #222222;
+  font-size: 31px;
+  padding: 6px 0;
+}
+/*  INTRO PAGE END  */
+/*   RECENT PHOTOS  */
 .recent-detail-photo {
-  margin: auto 6px 6px auto;
+  padding: 6px 12px;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 101;
+  background: #f5f5f5;
 }
 .recent-detail-photo img {
   max-width: 100%;
   max-height: 75vh;
 }
+.recent-wrapper {
+  position: relative;
+  z-index: 100;
+  overflow-x: hidden;
+}
+.detail-set {
+  overflow-y: hidden;
+  height: 100vh;
+  position: absolute;
+}
+/*   RECENT PHOTOS  END  */
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   .masonry-brick {
@@ -44,6 +77,9 @@
   }
   #intro {
     padding: 7vh 0;
+  }
+  #reykjavik {
+    padding: 36px 16px;
   }
 }
 /* Medium devices (desktops, 992px and up) */

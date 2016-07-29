@@ -1,54 +1,55 @@
-<!-- PHOTODETAIL START -->
-<div class="recent-detail-photo" ng-show="photoDetail !== null">
-  <!-- <flickr-img info="photoDetail"></flickr-img> -->
-  <flickr-img info="photoDetail"></flickr-img>
-  <div class="recent-detail-descrip">
-    {{photoDetail.title}} {{photoDetail.description._content}}
+<div class="recent-wrapper" ng-class="{'detail-set' : photoDetail !== null}">
+  <!-- PHOTODETAIL START -->
+  <div class="recent-detail-photo" ng-show="photoDetail !== null">
+    <!-- <flickr-img info="photoDetail"></flickr-img> -->
+    <flickr-img info="photoDetail"></flickr-img>
+    <div class="recent-detail-descrip">
+      {{photoDetail.title}} {{photoDetail.description._content}}
+    </div>
+    <nav>
+      <ul class="pager" ng-hide="recent.photos.photo.length === 0">
+        <li ng-show="detailIndex > 0">
+          <a ng-click="detailPrev()">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+        </li>
+        <li>
+          <a ng-click="detailClose()">
+            <span class="glyphicon glyphicon-remove"></span>
+          </a>
+        </li>
+        <li ng-show="detailIndex < photoCount - 1">
+          <a ng-click="detailNext()">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
+  <!-- PHOTODETAIL END -->
+  <!-- ERROR START -->
+  <br>
+  <div class="alert alert-danger" role="alert" ng-show="recent.stat == 'fail'">
+    <b>An error occurred</b>
+    <br> Code: {{recent.code}} / Message: {{recent.message}}
+  </div>
+  <!-- ERROR END -->
+  <!-- THUMBNAILS START -->
+  <div class="recent-thumbs" ng-class="{'detail-set' : photoDetail !== null}" masonry>
+    <div ng-repeat="img in thumbnailsShow" class="masonry-brick">
+      <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_m.jpg" ng-click="thumbnailClick(img, $index)">
+    </div>
+  </div>
+  <!-- THUMBNAILS END -->
+  <!-- NAV START -->
   <nav>
     <ul class="pager" ng-hide="recent.photos.photo.length === 0">
-      <li ng-show="detailIndex > 0">
-        <a ng-click="detailPrev()">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-      </li>
       <li>
-        <a ng-click="detailClose()">
-          <span class="glyphicon glyphicon-remove"></span>
-        </a>
-      </li>
-      <li ng-show="detailIndex < photoCount - 1">
-        <a ng-click="detailNext()">
-          <span class="glyphicon glyphicon-chevron-right"></span>
+        <a ng-click="thumbnailsAdd()">
+          <span class="glyphicon glyphicon-plus"></span>
         </a>
       </li>
     </ul>
   </nav>
-</div>
-<!-- PHOTODETAIL END -->
-<!-- ERROR START -->
-<br>
-<div class="alert alert-danger" role="alert" ng-show="recent.stat == 'fail'">
-  <b>An error occurred</b>
-  <br> Code: {{recent.code}} / Message: {{recent.message}}
-</div>
-<!-- ERROR END -->
-<!-- THUMBNAILS START -->
-<div masonry>
-  <div ng-repeat="img in thumbnailsShow" class="masonry-brick">
-    <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_m.jpg" ng-click="thumbnailClick(img, $index)">
-  </div>
-</div>
-<!-- THUMBNAILS END -->
-<!-- NAV START -->
-<nav>
-  <ul class="pager" ng-hide="recent.photos.photo.length === 0">
-    <li>
-      <a ng-click="thumbnailsAdd()">
-        <span class="glyphicon glyphicon-plus"></span>
-      </a>
-    </li>
-  </ul>
-</nav>
-<!-- NAV END -->
+  <!-- NAV END -->
 </div>

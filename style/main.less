@@ -8,6 +8,9 @@
   }
 }
 
+
+/*  INTRO PAGE  */
+
 #intro {
   background: url(../images/selfloss.jpg) center;
   width: 100%;
@@ -15,6 +18,12 @@
   padding: 5vh 0;
   a {
     color: @gray-lighter;
+  }
+  .icon-github {
+    font-size: 29px;
+    position: relative;
+    top: 8px;
+    margin-right: @padding-base-horizontal;
   }
   .creative-commons {
     font-size: @font-size-small;
@@ -27,21 +36,55 @@
 #reykjavik {
   background: url(../images/reykjavik.jpg) center;
   height: 175px;
+  color: @gray-lighter;
+  padding: 36px @padding-base-horizontal;
 }
 
 #the-end {
   background: url(../images/the-end.jpg) center;
   height: 675px;
-  padding-top: @padding-base-vertical
+  padding-top: @padding-base-vertical;
+  .icon-github {
+    color: @gray-darker;
+    font-size: 31px;
+    padding: @padding-base-vertical 0;
+  }
 }
 
+
+/*  INTRO PAGE END  */
+
+
+/*   RECENT PHOTOS  */
+
 .recent-detail-photo {
-  margin: auto @padding-base-vertical @padding-base-vertical auto;
+  padding: @padding-base-vertical @padding-base-horizontal;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 101;
+  background: @well-bg;
   img {
     max-width: 100%;
     max-height: 75vh;
   }
 }
+
+.recent-wrapper {
+  position: relative;
+  z-index: 100;
+  overflow-x: hidden;
+}
+
+.detail-set {
+  overflow-y: hidden;
+  height: 100vh;
+  position: absolute;
+}
+
+
+/*   RECENT PHOTOS  END  */
 
 
 /* Small devices (tablets, 768px and up) */
@@ -52,6 +95,9 @@
   }
   #intro {
     padding: 7vh 0;
+  }
+  #reykjavik {
+    padding: 36px @padding-large-horizontal;
   }
 }
 
