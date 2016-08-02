@@ -7,7 +7,7 @@
  * # flickImg
  */
 angular.module('mkm.flickr')
-  .directive('flickrImg', ['restAPI', function(restAPI) {
+  .directive('flickrImg', [function() {
     return {
       templateUrl: function(element) {
 

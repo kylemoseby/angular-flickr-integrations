@@ -7,8 +7,10 @@
  * # recentPhotos
  */
 angular.module('mkm.flickr')
-  .directive('recentPhotos', ['restAPI', function($flickr) {
-    function link(scope) {
+  .directive('recentPhotos', ['restAPI', '$location', '$anchorScroll', function($flickr, $location, $anchorScroll) {
+    // .directive('recentPhotos', ['restAPI', function($flickr) {
+
+    function link(scope, element) {
 
       scope.detailIndex = null;
       scope.photoDetail = null;
@@ -19,6 +21,12 @@ angular.module('mkm.flickr')
       scope.photoStep = scope.photoStep || 5;
       scope.photoCount = scope.countInit - scope.photoStep || 0;
 
+      scope.anchorID = scope.flickrID.replace('@', '');
+
+      var scrollHere = null;
+
+      element.attr('id', scope.anchorID);
+
       var photoData = new $flickr.getRecent(scope.flickrID);
 
       photoData.then(function(data) {
@@ -27,7 +35,6 @@ angular.module('mkm.flickr')
 
         scope.thumbnailsAdd();
       });
-
 
       scope.thumbnailsAdd = function() {
 
@@ -41,6 +48,12 @@ angular.module('mkm.flickr')
         scope.photoDetail = img;
 
         scope.detailIndex = ind;
+
+        $location.hash(scope.anchorID);
+
+        $anchorScroll();
+
+        console.log(scope.photoDetail);
       };
 
       function photoDetailSet(ind) {
@@ -64,10 +77,34 @@ angular.module('mkm.flickr')
 
       scope.detailClose = function() {
 
+        scrollHere = scope.anchorID + scope.detailIndex;
+
+        // $location.hash(scrollHere);
+
         scope.detailIndex = null;
 
         scope.photoDetail = null;
+
+        // $anchorScroll();
+
       };
+
+      scope.$watch('detailIndex', function(newValue, oldValue) {
+
+        // console.log(newValue);
+        // console.log(oldValue);
+
+        if (newValue === null && oldValue !== null) {
+
+          scope.$evalAsync(function() {
+
+            $location.hash(scope.anchorID + oldValue);
+
+            $anchorScroll();
+          });
+        }
+
+      });
 
     }
 

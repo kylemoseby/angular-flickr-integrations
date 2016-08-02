@@ -11,7 +11,7 @@
 angular.module('mkm.flickr', [
     'ngRoute',
     'API',
-    'wu.masonry'
+    'ngMaterial'
   ])
   .service('restAPI', ['$http', '$api', function($http, $api) {
 
