@@ -43,7 +43,7 @@ angular.module('mkm.flickr', [
             'method': 'flickr.people.getPhotos',
             'user_id': userid,
             'api_key': apiKey,
-            'extras': 'description',
+            'extras': 'o_dims,description',
             'format': 'json',
             'per_page': 500
           }

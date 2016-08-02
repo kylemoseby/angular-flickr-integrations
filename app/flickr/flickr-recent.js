@@ -7,10 +7,9 @@
  * # recentPhotos
  */
 angular.module('mkm.flickr')
-  .directive('recentPhotos', ['restAPI', '$location', '$anchorScroll', function($flickr, $location, $anchorScroll) {
-    // .directive('recentPhotos', ['restAPI', function($flickr) {
+  .directive('recentPhotos', ['restAPI', function($flickr) {
 
-    function link(scope, element) {
+    function link(scope) {
 
       scope.detailIndex = null;
       scope.photoDetail = null;
@@ -21,16 +20,15 @@ angular.module('mkm.flickr')
       scope.photoStep = scope.photoStep || 5;
       scope.photoCount = scope.countInit - scope.photoStep || 0;
 
-      scope.anchorID = scope.flickrID.replace('@', '');
+      // scope.anchorID = scope.flickrID.replace('@', '');
+      // var scrollHere = null;
+      // element.attr('id', scope.anchorID);
 
-      var scrollHere = null;
-
-      element.attr('id', scope.anchorID);
 
       var photoData = new $flickr.getRecent(scope.flickrID);
 
       photoData.then(function(data) {
-
+        console.log(data);
         scope.recent = data.data.photos.photo;
 
         scope.thumbnailsAdd();
@@ -49,11 +47,19 @@ angular.module('mkm.flickr')
 
         scope.detailIndex = ind;
 
-        $location.hash(scope.anchorID);
+        // $location.hash(scope.anchorID);
 
-        $anchorScroll();
+        // $anchorScroll();
+      };
 
-        console.log(scope.photoDetail);
+      scope.thumbColSpan = function(img) {
+        console.log(img.o_width);
+        console.log(img.o_height);
+      };
+
+      scope.thumbRowSpan = function(img) {
+
+        return img === img;
       };
 
       function photoDetailSet(ind) {
@@ -77,7 +83,7 @@ angular.module('mkm.flickr')
 
       scope.detailClose = function() {
 
-        scrollHere = scope.anchorID + scope.detailIndex;
+        // scrollHere = scope.anchorID + scope.detailIndex;
 
         // $location.hash(scrollHere);
 
@@ -88,23 +94,6 @@ angular.module('mkm.flickr')
         // $anchorScroll();
 
       };
-
-      scope.$watch('detailIndex', function(newValue, oldValue) {
-
-        // console.log(newValue);
-        // console.log(oldValue);
-
-        if (newValue === null && oldValue !== null) {
-
-          scope.$evalAsync(function() {
-
-            $location.hash(scope.anchorID + oldValue);
-
-            $anchorScroll();
-          });
-        }
-
-      });
 
     }
 
