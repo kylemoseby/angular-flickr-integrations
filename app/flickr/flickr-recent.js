@@ -20,15 +20,11 @@ angular.module('mkm.flickr')
       scope.photoStep = scope.photoStep || 5;
       scope.photoCount = scope.countInit - scope.photoStep || 0;
 
-      // scope.anchorID = scope.flickrID.replace('@', '');
-      // var scrollHere = null;
-      // element.attr('id', scope.anchorID);
-
 
       var photoData = new $flickr.getRecent(scope.flickrID);
 
       photoData.then(function(data) {
-        console.log(data);
+
         scope.recent = data.data.photos.photo;
 
         scope.thumbnailsAdd();
@@ -47,24 +43,12 @@ angular.module('mkm.flickr')
 
         scope.detailIndex = ind;
 
-        // $location.hash(scope.anchorID);
-
-        // $anchorScroll();
-      };
-
-      scope.thumbColSpan = function(img) {
-        console.log(img.o_width);
-        console.log(img.o_height);
-      };
-
-      scope.thumbRowSpan = function(img) {
-
-        return img === img;
       };
 
       function photoDetailSet(ind) {
 
         scope.photoDetail = scope.recent[ind];
+
       }
 
       scope.detailNext = function() {
@@ -72,6 +56,7 @@ angular.module('mkm.flickr')
         scope.detailIndex++;
 
         photoDetailSet(scope.detailIndex);
+
       };
 
       scope.detailPrev = function() {
@@ -79,19 +64,14 @@ angular.module('mkm.flickr')
         scope.detailIndex--;
 
         photoDetailSet(scope.detailIndex);
+
       };
 
       scope.detailClose = function() {
 
-        // scrollHere = scope.anchorID + scope.detailIndex;
-
-        // $location.hash(scrollHere);
-
         scope.detailIndex = null;
 
         scope.photoDetail = null;
-
-        // $anchorScroll();
 
       };
 

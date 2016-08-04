@@ -1,9 +1,8 @@
 <br>
 <!-- <div class="recent-wrapper"  -->
 <!-- PHOTODETAIL START -->
-<div class="recent-detail-photo" ng-show="photoDetail !== null">
-  <!-- <flickr-img info="photoDetail"></flickr-img> -->
-  <flickr-img info="photoDetail" class="detail-img"></flickr-img>
+<div class="flickr-detail-photo" ng-show="photoDetail !== null">
+  <flickr-img info="photoDetail"></flickr-img>
   <div class="recent-detail-descrip">
     {{photoDetail.title}} {{photoDetail.description._content}}
   </div>
@@ -36,9 +35,9 @@
 </div>
 <!-- ERROR END -->
 <!-- THUMBNAILS START -->
-<md-grid-list md-cols-sm="2" md-cols-md="4" md-cols-lg="8" md-cols-gt-lg="8" md-row-height="150px">
+<md-grid-list md-gutter="0.33em" md-cols-sm="2" md-cols-md="4" md-cols-lg="8" md-cols-gt-lg="8" md-row-height="1:1">
   <md-grid-tile ng-repeat="img in thumbnailsShow">
-    <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_q.jpg" ng-attr-id="{{anchorID + $index}}" ng-click="thumbnailClick(img, $index)">
+    <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_q.jpg" ng-attr-id="{{anchorID + $index}}" ng-click="thumbnailClick(img, $index, $event)">
   </md-grid-tile>
 </md-grid-list>
 <!-- THUMBNAILS END -->
