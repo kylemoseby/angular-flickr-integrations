@@ -1,4 +1,9 @@
 <div class="row">
+  <div class="col-md-12" id="reykjavik">
+    <h1>Demos</h1>
+  </div>
+</div>
+<div class="row">
   <div class="col-md-12">
     <h3>Recent Photos</h3>
     <pre>&lt;recent-photos flickr-id=&quot;recent&quot;&gt;&lt;/recent-photos&gt;</pre>
@@ -7,6 +12,19 @@
     </div>
     <div class="well well-lg">
       <recent-photos flickr-id="flickrID" count="50"></recent-photos>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h3>Flickr Album</h3>
+    <pre>&lt;flickr-album album-id=&quot;albumID&quot;&gt;&lt;/flickr-album&gt;</pre>
+    <div class="alert alert-info" role="alert">
+      The attribute "album-id" is passed with call to <a ng-href="https://www.flickr.com/services/api/flickr.people.getPhotos.html" target="_blank">flickr.people.getPhotos</a> as "user_id".
+    </div>
+    <br/>
+    <div class="well well-lg">
+      <flickr-album album-id="albumID"></flickr-album>
     </div>
   </div>
 </div>
@@ -35,23 +53,5 @@
       <li>flickr-img.html</li>
       <li>flickr-recent.html</li>
     </ul>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12" id="reykjavik">
-    <h1>Demos</h1>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <h3>Flickr Album</h3>
-    <pre>&lt;flickr-album album-id=&quot;albumID&quot;&gt;&lt;/flickr-album&gt;</pre>
-    <div class="alert alert-info" role="alert">
-      The attribute "album-id" is passed with call to <a ng-href="https://www.flickr.com/services/api/flickr.people.getPhotos.html" target="_blank">flickr.people.getPhotos</a> as "user_id".
-    </div>
-    <br/>
-    <div class="well well-lg">
-      <flickr-album album-id="albumID"></flickr-album>
-    </div>
   </div>
 </div>
