@@ -7,9 +7,11 @@
  * # recentPhotos
  */
 angular.module('mkm.flickr')
-  .directive('recentPhotos', ['restAPI', function($flickr) {
+  .directive('recentPhotos', ['restAPI', '$mdPanel', function($flickr, $mdPanel) {
 
     function link(scope) {
+
+      scope.detailPanel = $mdPanel;
 
       scope.detailIndex = null;
       scope.photoDetail = null;
@@ -37,18 +39,48 @@ angular.module('mkm.flickr')
         scope.thumbnailsShow = scope.recent.slice(0, scope.photoCount);
       };
 
-      scope.thumbnailClick = function(img, ind) {
+      scope.thumbnailClick = function($event, img) {
+        console.log($event);
 
         scope.photoDetail = img;
 
-        scope.detailIndex = ind;
+        var position = this.detailPanel.newPanelPosition()
+          .absolute()
+          .center();
 
+        /* OPEN THE PANEL */
+        this.detailPanel.open({
+          'attachTo': angular.element(document.body),
+          'controller': PanelDialogCtrl,
+          'controllerAs': 'ctrl',
+          'disableParentScroll': true,
+          'templateUrl': 'flickr/flickr-photo-detail.html',
+          'hasBackdrop': true,
+          'panelClass': 'flickr-photo-detail',
+          'position': position,
+          'trapFocus': true,
+          'zIndex': 150,
+          'clickOutsideToClose': true,
+          'escapeToClose': true,
+          'focusOnOpen': true,
+          'targetEvent': $event,
+          'locals': {
+            photoDetail: scope.photoDetail
+          }
+        });
       };
 
+
+      function PanelDialogCtrl($scope, mdPanelRef, photoDetail) {
+
+        this._mdPanelRef = mdPanelRef;
+
+        $scope.photoDetail = photoDetail;
+      }
+
+
       function photoDetailSet(ind) {
-
         scope.photoDetail = scope.recent[ind];
-
       }
 
       scope.detailNext = function() {
@@ -56,7 +88,6 @@ angular.module('mkm.flickr')
         scope.detailIndex++;
 
         photoDetailSet(scope.detailIndex);
-
       };
 
       scope.detailPrev = function() {
@@ -64,7 +95,6 @@ angular.module('mkm.flickr')
         scope.detailIndex--;
 
         photoDetailSet(scope.detailIndex);
-
       };
 
       scope.detailClose = function() {
@@ -72,7 +102,6 @@ angular.module('mkm.flickr')
         scope.detailIndex = null;
 
         scope.photoDetail = null;
-
       };
 
     }

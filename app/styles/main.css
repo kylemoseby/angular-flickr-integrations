@@ -40,8 +40,6 @@
 /*   RECENT PHOTOS  */
 .flickr-detail-photo {
   padding: 6px 12px;
-  width: 100%;
-  height: 95vh;
   background: #f5f5f5;
 }
 .flickr-detail-photo img {
