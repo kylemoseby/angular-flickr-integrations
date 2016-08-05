@@ -40,9 +40,8 @@ angular.module('mkm.flickr')
       };
 
       scope.thumbnailClick = function($event, img) {
-        console.log($event);
-
         scope.photoDetail = img;
+
 
         var position = this.detailPanel.newPanelPosition()
           .absolute()
