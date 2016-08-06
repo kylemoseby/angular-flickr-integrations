@@ -1,57 +1,53 @@
-<div class="row">
-  <div class="col-md-12" id="reykjavik">
-    <h1>Demos</h1>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <h3>Recent Photos</h3>
-    <pre>&lt;recent-photos flickr-id=&quot;recent&quot;&gt;&lt;/recent-photos&gt;</pre>
-    <div class="alert alert-info" role="alert">
-      The attribute "flickr-id" is passed with call to <a ng-href="https://www.flickr.com/services/api/flickr.photosets.getPhotos.html" target="_blank">flickr.photosets.getPhotos</a> as "photoset_id".
-    </div>
-    <div class="well well-lg">
-      <recent-photos flickr-id="flickrID" count="50"></recent-photos>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <h3>Flickr Album</h3>
-    <pre>&lt;flickr-album album-id=&quot;albumID&quot;&gt;&lt;/flickr-album&gt;</pre>
-    <div class="alert alert-info" role="alert">
-      The attribute "album-id" is passed with call to <a ng-href="https://www.flickr.com/services/api/flickr.people.getPhotos.html" target="_blank">flickr.people.getPhotos</a> as "user_id".
-    </div>
-    <br/>
-    <div class="well well-lg">
-      <flickr-album album-id="albumID"></flickr-album>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <h2>Running with Grunt</h2>
-    <p>Download the project and run
-      <kbd>grunt serve</kbd>
+<md-content flex="50">
+  <h1>Angularjs Integrations for Flickr</h1>
+  <div class="creative-commons">
+    <p><a href="https://github.com/kylemoseby/angular-flickr-integrations" target="_blank"><span class="icon-github"></span></a>&nbsp;
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
     </p>
-    <h2>Setup</h2>
-    <p>Include the file "source/angular-flickr-integrations.js" found in the root of this project. Individual js files can be found at "app/flick/flickr-***.js". Then load the module <code>mkm.flickr</code> in your app.</p>
-    <pre>angular
+    <p><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">Flickr Integrations in Angular</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://kylemoseby.com" property="cc:attributionName" rel="cc:attributionURL">M. Kyle Moseby</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+    <p>Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/kylemoseby/angular-flickr-integrations" rel="dct:source">https://github.com/kylemoseby/angular-flickr-integrations</a>.</p>
+  </div>
+  <h3>Flickr Album</h3>
+  <pre>&lt;flickr-album album-id=&quot;albumID&quot;&gt;&lt;/flickr-album&gt;</pre>
+  <div class="alert alert-info" role="alert">
+    The attribute "album-id" is passed with call to <a ng-href="https://www.flickr.com/services/api/flickr.people.getPhotos.html" target="_blank">flickr.people.getPhotos</a> as "user_id".
+  </div>
+  <br/>
+  <div class="well well-lg">
+    <flickr-album album-id="albumID"></flickr-album>
+  </div>
+  <h3>Recent Photos</h3>
+  <pre>&lt;recent-photos flickr-id=&quot;recent&quot;&gt;&lt;/recent-photos&gt;</pre>
+  <div class="alert alert-info " role="alert ">
+    The attribute "flickr-id " is passed with call to <a ng-href="https://www.flickr.com/services/api/flickr.photosets.getPhotos.html " target="_blank ">flickr.photosets.getPhotos</a> as "photoset_id ".
+  </div>
+  <div class="well well-lg ">
+    <recent-photos flickr-id="flickrID " count="20 "></recent-photos>
+  </div>
+  <h2>Running with Grunt</h2>
+  <p>Download the project and run
+    <kbd>grunt serve</kbd>
+  </p>
+  <h2>Dependencies</h2>
+  <p>Dependencies are maintained using <a href="https://bower.io/" target="_blank">Bower</a>. A list of dependencies can be found in the bower.json file in the projects root directory. To update run:
+    <kbd>bower update</kbd>
+  </p>
+  <h2>Setup</h2>
+  <p>Include the file "source/angular-flickr-integrations.js " found in the root of this project. Individual js files can be found at "app/flick/flickr-***.js ". Then load the module <code>mkm.flickr</code> in your app.</p>
+  <pre>angular
   .module('demoApp', [
     'ngAnimate',
     'ngRoute',
     'ngSanitize',
     'ngTouch',
     'mkm.flickr'
-  ]);
-</pre>
-    <h3>Views</h3>
-    <p>Each directive has one HTML file associated with it. The default view location is /flickr/flickr-****.html. This can be overwritten using the "new-view".</p>
-    <pre>&lt;flickr-album album-id=&quot;foo&quot; new-view=&quot;bar/view.html&quot;&gt;&lt;/flickr-album&gt;</pre>
-    <ul>
-      <li>flickr-album.html</li>
-      <li>flickr-img.html</li>
-      <li>flickr-recent.html</li>
-    </ul>
-  </div>
-</div>
+  ]);</pre>
+  <h3>Views</h3>
+  <p>Each directive has one HTML file associated with it. The default view location is /flickr/flickr-****.html. This can be overwritten using the "new-view ".</p>
+  <pre>&lt;flickr-album album-id=&quot;foo&quot; new-view=&quot;bar/view.html&quot;&gt;&lt;/flickr-album&gt;</pre>
+  <ul>
+    <li>flickr-album.html</li>
+    <li>flickr-img.html</li>
+    <li>flickr-recent.html</li>
+  </ul>
+</md-content>

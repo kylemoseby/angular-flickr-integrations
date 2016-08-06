@@ -26,11 +26,6 @@
   color: #eeeeee;
   padding: 36px 12px;
 }
-#the-end {
-  background: url(../images/the-end.jpg) center;
-  height: 675px;
-  padding-top: 6px;
-}
 #the-end .icon-github {
   color: #222222;
   font-size: 31px;
@@ -50,23 +45,18 @@
   overflow: hidden;
 }
 /*   RECENT PHOTOS  END  */
+/*   FLICKR GALLERY   */
+.gallery-thumbs {
+  overflow: hidden;
+}
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  .masonry-brick {
-    width: 33%;
-  }
-  #intro {
-    padding: 7vh 0;
-  }
   #reykjavik {
     padding: 36px 16px;
   }
 }
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  .masonry-brick {
-    width: 20%;
-  }
   #intro {
     padding: 12vh 0;
   }

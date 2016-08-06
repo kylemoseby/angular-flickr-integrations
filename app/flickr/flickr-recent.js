@@ -39,7 +39,7 @@ angular.module('mkm.flickr')
         scope.thumbnailsShow = scope.recent.slice(0, scope.photoCount);
       };
 
-      scope.thumbnailClick = function($event, img) {
+      scope.thumbnailClick = function($event, img, ind) {
         scope.photoDetail = img;
 
 
@@ -49,59 +49,70 @@ angular.module('mkm.flickr')
 
         /* OPEN THE PANEL */
         this.detailPanel.open({
-          'attachTo': angular.element(document.body),
-          'controller': PanelDialogCtrl,
-          'controllerAs': 'ctrl',
-          'disableParentScroll': true,
-          'templateUrl': 'flickr/flickr-photo-detail.html',
-          'hasBackdrop': true,
-          'panelClass': 'flickr-photo-detail',
-          'position': position,
-          'trapFocus': true,
-          'zIndex': 150,
-          'clickOutsideToClose': true,
-          'escapeToClose': true,
-          'focusOnOpen': true,
-          'targetEvent': $event,
-          'locals': {
-            photoDetail: scope.photoDetail
+          attachTo: angular.element(document.body),
+          controller: photoDetailCtrl,
+          controllerAs: 'ctrl',
+          disableParentScroll: true,
+          templateUrl: 'flickr/flickr-photo-detail.html',
+          hasBackdrop: true,
+          panelClass: 'flickr-photo-detail',
+          position: position,
+          trapFocus: true,
+          zIndex: 150,
+          clickOutsideToClose: true,
+          escapeToClose: true,
+          focusOnOpen: true,
+          targetEvent: $event,
+          locals: {
+            photoDetail: scope.photoDetail,
+            detailIndex: ind,
+            photos: scope.thumbnailsShow
           }
         });
       };
 
 
-      function PanelDialogCtrl($scope, mdPanelRef, photoDetail) {
+      function photoDetailCtrl($scope, mdPanelRef, photoDetail, detailIndex, photos) {
+        console.log($scope);
 
-        this._mdPanelRef = mdPanelRef;
+        $scope._mdPanelRef = mdPanelRef;
 
         $scope.photoDetail = photoDetail;
+        $scope.detailIndex = detailIndex;
+        $scope.photos = photos;
+
+        $scope.detailClose = function() {
+
+          this._mdPanelRef.close().then(function() {
+
+            angular.element(document.querySelector('.recent-tile')).focus();
+
+          });
+
+        };
+
+        $scope.detailNext = function() {
+
+          $scope.detailIndex++;
+
+          photoDetailSet($scope.detailIndex);
+
+        };
+
+        $scope.detailPrev = function() {
+
+          $scope.detailIndex--;
+
+          photoDetailSet($scope.detailIndex);
+
+        };
+
+
+        function photoDetailSet(ind) {
+          $scope.photoDetail = $scope.photos[ind];
+        }
+
       }
-
-
-      function photoDetailSet(ind) {
-        scope.photoDetail = scope.recent[ind];
-      }
-
-      scope.detailNext = function() {
-
-        scope.detailIndex++;
-
-        photoDetailSet(scope.detailIndex);
-      };
-
-      scope.detailPrev = function() {
-
-        scope.detailIndex--;
-
-        photoDetailSet(scope.detailIndex);
-      };
-
-      scope.detailClose = function() {
-
-        scope.detailIndex = null;
-
-        scope.photoDetail = null;
-      };
 
     }
 
