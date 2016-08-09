@@ -1,24 +1,18 @@
 /*  INTRO PAGE  */
-#intro {
-  background: url(../images/selfloss.jpg) center;
-  width: 100%;
-  color: #eeeeee;
-  padding: 5vh 0;
-}
-#intro a {
-  color: #eeeeee;
-}
-#intro .icon-github {
+.icon-github {
   font-size: 29px;
   position: relative;
   top: 8px;
   margin-right: 12px;
 }
-#intro .creative-commons {
+.creative-commons {
   font-size: 12px;
-  -webkit-text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85);
-  -moz-text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85);
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85);
+}
+.creative-commons a {
+  text-decoration: none;
+}
+.main-page {
+  padding: 2vh 5%;
 }
 #reykjavik {
   background: url(../images/reykjavik.jpg) center;
@@ -49,6 +43,10 @@
 .gallery-thumbs {
   overflow: hidden;
 }
+.gallery-thumbs img {
+  width: 100%;
+  height: 100%;
+}
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   #reykjavik {
@@ -57,8 +55,8 @@
 }
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  #intro {
-    padding: 12vh 0;
+  .main-page {
+    padding: 3vh 25%;
   }
 }
 /* Large devices (large desktops, 1200px and up) */

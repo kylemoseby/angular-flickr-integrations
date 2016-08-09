@@ -30,6 +30,7 @@ angular.module('mkm.flickr')
         scope.recent = data.data.photos.photo;
 
         scope.thumbnailsAdd();
+
       });
 
       scope.thumbnailsAdd = function() {
@@ -37,11 +38,12 @@ angular.module('mkm.flickr')
         scope.photoCount += scope.photoStep;
 
         scope.thumbnailsShow = scope.recent.slice(0, scope.photoCount);
+
       };
 
       scope.thumbnailClick = function($event, img, ind) {
-        scope.photoDetail = img;
 
+        scope.photoDetail = img;
 
         var position = this.detailPanel.newPanelPosition()
           .absolute()
@@ -73,7 +75,6 @@ angular.module('mkm.flickr')
 
 
       function photoDetailCtrl($scope, mdPanelRef, photoDetail, detailIndex, photos) {
-        console.log($scope);
 
         $scope._mdPanelRef = mdPanelRef;
 
@@ -88,7 +89,6 @@ angular.module('mkm.flickr')
             angular.element(document.querySelector('.recent-tile')).focus();
 
           });
-
         };
 
         $scope.detailNext = function() {
