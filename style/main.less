@@ -1,34 +1,70 @@
 @import "variables.less";
-.masonry-brick {
-  padding: 0 @padding-base-vertical @padding-base-vertical 0;
-  overflow: hidden;
-  width: 50%;
-  img {
-    width: 100%;
-  }
+
+/*  INTRO PAGE  */
+
+.icon-github {
+  font-size: 29px;
+  position: relative;
+  top: 8px;
+  margin-right: @padding-base-horizontal;
 }
 
-#intro {
-  background: url(../images/selfloss.jpg);
-  width: 100%;
-  color: @gray-lighter;
-  padding: 5vh 0;
+.creative-commons {
+  font-size: @font-size-small;
   a {
-    color: @gray-lighter;
-  }
-  .creative-commons {
-    font-size: @font-size-small;
-    -webkit-text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85);
-    -moz-text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85);
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85);
+    text-decoration: none;
   }
 }
 
-.recent-detail-photo {
-  margin: auto @padding-base-vertical @padding-base-vertical auto;
+.main-page {
+  padding: 2vh 5%;
+}
+
+#reykjavik {
+  background: url(../images/reykjavik.jpg) center;
+  height: 175px;
+  color: @gray-lighter;
+  padding: 36px @padding-base-horizontal;
+}
+
+#the-end {
+  .icon-github {
+    color: @gray-darker;
+    font-size: 31px;
+    padding: @padding-base-vertical 0;
+  }
+}
+
+
+/*  INTRO PAGE END  */
+
+
+/*   RECENT PHOTOS  */
+
+.flickr-detail-photo {
+  padding: @padding-base-vertical @padding-base-horizontal;
+  background: @well-bg;
   img {
     max-width: 100%;
     max-height: 75vh;
+  }
+}
+
+.recent-tile {
+  overflow: hidden;
+}
+
+
+/*   RECENT PHOTOS  END  */
+
+
+/*   FLICKR GALLERY   */
+
+.gallery-thumbs {
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -36,11 +72,8 @@
 /* Small devices (tablets, 768px and up) */
 
 @media (min-width: @screen-sm-min) {
-  .masonry-brick {
-    width: 33%;
-  }
-  #intro {
-    padding: 7vh 0;
+  #reykjavik {
+    padding: 36px @padding-large-horizontal;
   }
 }
 
@@ -48,11 +81,8 @@
 /* Medium devices (desktops, 992px and up) */
 
 @media (min-width: @screen-md-min) {
-  .masonry-brick {
-    width: 20%;
-  }
-  #intro {
-    padding: 12vh 0;
+  .main-page {
+    padding: 3vh 25%;
   }
 }
 

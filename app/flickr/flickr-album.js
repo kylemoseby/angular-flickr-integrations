@@ -7,9 +7,11 @@
  * # flickrGallery
  */
 angular.module('mkm.flickr')
-  .directive('flickrAlbum', ['restAPI', function($flickr) {
+  .directive('flickrAlbum', ['restAPI', '$mdPanel', function($flickr, $mdPanel) {
 
     function link(scope) {
+
+      scope.detailPanel = $mdPanel;
 
       var galleryID = scope.albumId;
 
@@ -24,54 +26,83 @@ angular.module('mkm.flickr')
       scope.photoDetail = null;
       scope.photoDetailIndx = null;
 
-      function photoDetailSet(ind) {
-
-        var newDetail = scope.gallery.photoset.photo[ind];
-
-        scope.photoDetail = newDetail;
-
-        // if (newDetail.hasOwnProperty('id')) {
-
-        // Call Flickr for image info
-        var imgInfo = $flickr.getImg(newDetail.id);
-
-        imgInfo.then(function(data) {
-
-          scope.detailInfo = data.data.photo;
-        });
-        // }
-      }
-
       /*
         ALBUM NAVIGATION
       */
-      scope.thumbClick = function(ind) {
+      scope.thumbClick = function($event, img, ind) {
 
-        scope.photoDetailIndx = ind;
+        scope.photoDetail = img;
 
-        photoDetailSet(ind);
+        var position = this.detailPanel.newPanelPosition()
+          .absolute()
+          .center();
+
+        /* OPEN THE PANEL */
+        this.detailPanel.open({
+          attachTo: angular.element(document.body),
+          controller: photoDetailCtrl,
+          controllerAs: 'ctrl',
+          disableParentScroll: true,
+          templateUrl: 'flickr/flickr-photo-detail.html',
+          hasBackdrop: true,
+          panelClass: 'flickr-photo-detail',
+          position: position,
+          trapFocus: true,
+          zIndex: 150,
+          clickOutsideToClose: true,
+          escapeToClose: true,
+          focusOnOpen: true,
+          targetEvent: $event,
+          locals: {
+            photoDetail: scope.photoDetail,
+            detailIndex: ind,
+            photos: scope.gallery.photoset.photo
+          }
+        });
       };
 
-      scope.detailClose = function() {
 
-        scope.photoDetail = null;
+      function photoDetailCtrl($scope, mdPanelRef, photoDetail, detailIndex, photos) {
 
-        scope.photoDetailIndx = null;
-      };
+        $scope._mdPanelRef = mdPanelRef;
 
-      scope.detailPrev = function() {
+        $scope.photoDetail = photoDetail;
+        $scope.detailIndex = detailIndex;
+        $scope.photos = photos;
 
-        scope.photoDetailIndx--;
+        $scope.detailClose = function() {
 
-        photoDetailSet(scope.photoDetailIndx);
-      };
+          this._mdPanelRef.close().then(function() {
 
-      scope.detailNext = function() {
+            angular.element(document.querySelector('.recent-tile')).focus();
 
-        scope.photoDetailIndx++;
+          });
+        };
 
-        photoDetailSet(scope.photoDetailIndx);
-      };
+        $scope.detailNext = function() {
+
+          $scope.detailIndex++;
+
+          photoDetailSet($scope.detailIndex);
+
+        };
+
+        $scope.detailPrev = function() {
+
+          $scope.detailIndex--;
+
+          photoDetailSet($scope.detailIndex);
+
+        };
+
+
+        function photoDetailSet(ind) {
+
+          $scope.photoDetail = $scope.photos[ind];
+
+        }
+
+      }
 
     }
 

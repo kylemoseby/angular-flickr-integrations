@@ -5,7 +5,7 @@ angular
     'ngAnimate',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
+    'ngMaterial',
     'mkm.flickr'
   ])
   .config(function($routeProvider) {

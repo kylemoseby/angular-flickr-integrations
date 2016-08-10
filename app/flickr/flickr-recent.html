@@ -1,31 +1,3 @@
-<!-- PHOTODETAIL START -->
-<div class="recent-detail-photo" ng-show="photoDetail !== null">
-  <!-- <flickr-img info="photoDetail"></flickr-img> -->
-  <flickr-img info="photoDetail"></flickr-img>
-  <div class="recent-detail-descrip">
-    {{photoDetail.title}} {{photoDetail.description._content}}
-  </div>
-  <nav>
-    <ul class="pager" ng-hide="recent.photos.photo.length === 0">
-      <li ng-show="detailIndex > 0">
-        <a ng-click="detailPrev()">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-      </li>
-      <li>
-        <a ng-click="detailClose()">
-          <span class="glyphicon glyphicon-remove"></span>
-        </a>
-      </li>
-      <li ng-show="detailIndex < photoCount - 1">
-        <a ng-click="detailNext()">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-</div>
-<!-- PHOTODETAIL END -->
 <!-- ERROR START -->
 <br>
 <div class="alert alert-danger" role="alert" ng-show="recent.stat == 'fail'">
@@ -34,11 +6,11 @@
 </div>
 <!-- ERROR END -->
 <!-- THUMBNAILS START -->
-<div masonry>
-  <div ng-repeat="img in thumbnailsShow" class="masonry-brick">
-    <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_m.jpg" ng-click="thumbnailClick(img, $index)">
-  </div>
-</div>
+<md-grid-list md-gutter="0.33em" md-cols="6" md-row-height="1:1" class="test">
+  <md-grid-tile ng-repeat="img in thumbnailsShow" class="recent-tile">
+    <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_q.jpg" ng-click="thumbnailClick($event, img, $index)">
+  </md-grid-tile>
+</md-grid-list>
 <!-- THUMBNAILS END -->
 <!-- NAV START -->
 <nav>
@@ -51,4 +23,3 @@
   </ul>
 </nav>
 <!-- NAV END -->
-</div>
