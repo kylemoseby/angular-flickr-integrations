@@ -1,0 +1,14 @@
+{
+  "title": "",
+  "description": "",
+  "tags": [],
+  "layout": "left",
+  "html": "<div>HTML here.</div>",
+  "css": "html { color: red; }",
+  "css_pre_processor": "less",
+  "js": "alert(\"test\");",
+  "html_classes": "loading",
+  "head": "<meta name=\"viewport\" content=\"width=device-width\">",
+  "css_external": "http://yoursite.com/style.css",
+  "js_external": "http://yoursite.com/script.js"
+}

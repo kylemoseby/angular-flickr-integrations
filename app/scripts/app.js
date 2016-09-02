@@ -6,7 +6,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngMaterial',
-    'mkm.flickr'
+    'mkm.flickr',
+    'mkm.codepen'
   ])
   .config(function($routeProvider) {
     $routeProvider

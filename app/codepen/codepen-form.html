@@ -1,0 +1,16 @@
+<span class="icon-codepen"></span>
+<form action="http://codepen.io/pen/define" method="POST" target="_blank">
+  <input type="hidden" name="data" value="{{options}}">
+  <input type="submit" value="Create New Pen with Prefilled Data" ng-click="penSubmit($event)">
+</form>
+<div>{{pen.title}}</div>
+<div>{{pen.description}}</div>
+<code>
+<pre>{{html}}</pre>
+</code>
+<code>
+	<pre>{{js}}</pre>
+</code>
+<code>
+	<pre>{{css}}</pre>
+</code>
