@@ -44,51 +44,27 @@
 @import "bower_components/bootstrap/less/responsive-utilities.less";
 // MY LESS
 @import "code-pen.less";
-
-/*  INTRO PAGE  */
-
-.icon-github {
-  font-size: 29px;
-  position: relative;
-  top: 8px;
-  margin-right: @padding-base-horizontal;
-}
-
-.creative-commons {
-  font-size: @font-size-small;
-  a {
-    text-decoration: none;
-  }
-}
-
+@import "flickr-albums.less";
+@import "flickr-recents.less";
+// /*  INTRO PAGE  */
 .main-page {
-  padding: 2vh 5%;
-}
-
-#the-end {
-  .icon-github {
-    color: @gray-darker;
-    font-size: 31px;
-    padding: @padding-base-vertical 0;
+  .flex-100 {
+    padding-right: @padding-large-horizontal;
+  }
+  .creative-commons {
+    font-size: @font-size-small;
+    a {
+      text-decoration: none;
+    }
   }
 }
 
+pre {
+  white-space: pre-wrap;
+}
 
-/*  INTRO PAGE END  */
 
-@import("flickr-albums.less")
 /*   RECENT PHOTOS  END  */
-
-
-/*   FLICKR GALLERY   */
-
-.gallery-thumbs {
-  overflow: hidden;
-  img {
-    width: 100%;
-    height: 100%;
-  }
-}
 
 
 /* Small devices (tablets, 768px and up) */

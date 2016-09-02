@@ -107,10 +107,7 @@ angular.module('mkm.flickr')
     }
 
     return {
-      templateUrl: function(element) {
-        console.log(element);
-        return element.attr('new-view') || 'flickr/flickr-album.html';
-      },
+      templateUrl: 'flickr/flickr-album.html',
       scope: {
         albumId: '=albumId'
       },

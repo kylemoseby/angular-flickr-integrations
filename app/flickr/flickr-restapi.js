@@ -9,7 +9,6 @@
  * Service in the mkm.flickr.
  */
 angular.module('mkm.flickr', [
-    'ngRoute',
     'API',
     'ngMaterial'
   ])
@@ -71,5 +70,7 @@ angular.module('mkm.flickr', [
       getImg: _getImg
     };
 
+  }])
+  .controller('mainCtrlr', ['', function() {
+
   }]);
-// }());

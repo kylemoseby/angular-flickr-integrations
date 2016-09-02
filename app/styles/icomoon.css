@@ -1,15 +1,13 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?xxjt9e');
-  src:  url('fonts/icomoon.eot?xxjt9e#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?xxjt9e') format('truetype'),
-    url('fonts/icomoon.woff?xxjt9e') format('woff'),
-    url('fonts/icomoon.svg?xxjt9e#icomoon') format('svg');
+  src: url('fonts/icomoon.eot?u4aziy');
+  src: url('fonts/icomoon.eot?u4aziy#iefix') format('embedded-opentype'), url('fonts/icomoon.ttf?u4aziy') format('truetype'), url('fonts/icomoon.woff?u4aziy') format('woff'), url('fonts/icomoon.svg?u4aziy#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: none;
@@ -18,28 +16,31 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-flickr:before {
+  content: "\eaa3";
+}
+
 .icon-flickr2:before {
   content: "\eaa4";
 }
-.icon-flickr4:before {
-  content: "\eaa6";
-}
+
 .icon-twitter:before {
   content: "\ea96";
 }
+
 .icon-github:before {
   content: "\eab0";
 }
-.icon-git:before {
-  content: "\eae7";
+
+.icon-tux:before {
+  content: "\eabd";
 }
+
 .icon-codepen:before {
   content: "\eae8";
 }
-
