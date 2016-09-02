@@ -58,6 +58,7 @@ module.exports = function(grunt) {
 
       styles: {
         files: ['less/{,*/}*.less'],
+        // tasks: ['less']
         tasks: ['less', 'newer:copy:styles', 'postcss']
       },
 
@@ -133,6 +134,7 @@ module.exports = function(grunt) {
         // options: {
         // paths: ['assets/css']
         // },
+        strictImports: true,
         files: {
           'app/styles/main.css': 'less/main.less'
         }
@@ -320,7 +322,7 @@ module.exports = function(grunt) {
       //   }
       source: {
         files: {
-          'source/angular-flickr-integrations.js': [
+          'source/angular-flickr-integrations.min.js': [
             'source/angular-flickr-integrations.js'
           ]
         }
@@ -334,6 +336,7 @@ module.exports = function(grunt) {
       },
       source: {
         src: [
+          '.tmp/templateCache.js',
           'app/flickr/flickr-restapi.js',
           'app/flickr/flickr-album.js',
           'app/flickr/flickr-img.js',
@@ -567,6 +570,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('source', [
+    'ngtemplates:dist',
     'concat:source',
     'uglify:source'
   ]);

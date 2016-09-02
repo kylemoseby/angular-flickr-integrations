@@ -44,47 +44,23 @@
 @import "bower_components/bootstrap/less/responsive-utilities.less";
 // MY LESS
 @import "code-pen.less";
-@import("flickr-albums.less");
-@import("flickr-recents.less");
-
-/*  INTRO PAGE  */
-
-.creative-commons {
-  font-size: @font-size-small;
-  a {
-    text-decoration: none;
-  }
-}
-
+@import "flickr-albums.less";
+@import "flickr-recents.less";
+// /*  INTRO PAGE  */
 .main-page {
-  padding: 2vh 5%;
-}
-
-#the-end {
-  .icon-github {
-    color: @gray-darker;
-    font-size: 31px;
-    padding: @padding-base-vertical 0;
+  .flex-100 {
+    padding-right: @padding-large-horizontal;
+  }
+  .creative-commons {
+    font-size: @font-size-small;
+    a {
+      text-decoration: none;
+    }
   }
 }
 
-
-/*  INTRO PAGE END  */
-
-.icon {
-  display: inline-block;
-  height: 36px;
-  width: 36px;
-}
-
-.icon.codepen {
-  background: url('/images/codepen.png');
-  background-size: cover;
-}
-
-.icon.github {
-  background: url('/images/GitHub-Mark-120px-plus.png');
-  background-size: cover;
+pre {
+  white-space: pre-wrap;
 }
 
 
