@@ -6717,17 +6717,25 @@ button.close {
   }
 }
 codepen .logo {
-  width: 20px;
+  width: 24px;
   /* required to center */
-  height: 20px;
+  height: 24px;
   position: relative;
   top: 3px;
 }
 codepen .outer-ring {
-  fill: black;
+  fill: #fff;
 }
 codepen .inner-box {
-  fill: black;
+  fill: #fff;
+}
+codepen .btn {
+  font-size: 14px;
+  font-weight: 500;
+}
+codepen .btn-codepen .btn-label {
+  position: relative;
+  top: -5px;
 }
 codepen body {
   text-align: center;
@@ -6789,9 +6797,13 @@ flickr-album .gallery-thumbs img {
   padding-right: 16px;
 }
 .main-page .creative-commons {
-  font-size: 12px;
+  position: relative;
+  top: -10px;
 }
-.main-page .creative-commons a {
+.main-page .icon-github {
+  font-size: 30px;
+}
+.main-page .icon-github a {
   text-decoration: none;
 }
 .main-page .well-lg {

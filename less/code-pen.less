@@ -5,17 +5,27 @@ codepen {
   .codepen-type {}
   // CodePen SVG Logo
   .logo {
-    width: @line-height-computed;
+    width: @font-size-h3;
     /* required to center */
-    height: @line-height-computed;
+    height: @font-size-h3;
     position: relative;
     top: 3px;
   }
   .outer-ring {
-    fill: black;
+    fill: #fff;
   }
   .inner-box {
-    fill: black;
+    fill: #fff;
+  }
+  .btn {
+    font-size: @font-size-base;
+    font-weight: @headings-font-weight;
+  }
+  .btn-codepen {
+    .btn-label {
+      position: relative;
+      top: -5px;
+    }
   }
   body {
     text-align: center;
