@@ -6,7 +6,7 @@
 </div>
 <!-- ERROR END -->
 <!-- THUMBNAILS START -->
-<md-grid-list md-cols="5" md-gutter="1em" md-row-height="1:1">
+<md-grid-list md-cols="2" md-cols-gt-xs="5" md-cols-gt-lg="7" md-row-height="1:1" md-gutter="10px">
   <md-grid-tile class="recent-photos" ng-repeat="img in thumbnailsShow">
     <img ng-src="https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_q.jpg" ng-click="thumbnailClick($event, img, $index)">
   </md-grid-tile>
