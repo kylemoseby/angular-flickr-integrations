@@ -337,6 +337,7 @@ module.exports = function(grunt) {
       source: {
         src: [
           '.tmp/templateCache.js',
+          'codepen_cache/codepen_templates.js',
           'app/flickr/flickr-restapi.js',
           'app/flickr/flickr-album.js',
           'app/flickr/flickr-img.js',
@@ -409,7 +410,8 @@ module.exports = function(grunt) {
         cwd: '<%= yeoman.app %>',
         src: [
           'flickr/{,*/}*.html',
-          'views/{,*/}*.html'
+          'views/{,*/}*.html',
+          'codepen/{,*/}*.html'
         ],
         dest: '.tmp/templateCache.js'
       },
@@ -421,9 +423,9 @@ module.exports = function(grunt) {
         },
         cwd: '<%= yeoman.app %>',
         src: [
-          'flickr/{,*/}*.html',
+          'codepen/{,*/}*.html',
         ],
-        dest: 'codepen/codepenTemplates.js'
+        dest: 'codepen_cache/codepen_templates.js'
       }
     },
 
@@ -471,11 +473,6 @@ module.exports = function(grunt) {
           cwd: '<%= yeoman.app %>',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
-        }, {
-          expand: true,
-          cwd: '<%= yeoman.app %>/flickr',
-          dest: '<%= yeoman.dist %>/flickr',
-          src: '{,*/}*.html'
         }, {
           expand: true,
           cwd: 'bower_components/bootstrap/fonts',
