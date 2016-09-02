@@ -1,4 +1,4 @@
-angular.module('demoApp').run(['$templateCache', function($templateCache) {
+angular.module('mkm.flickr').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('flickr/flickr-album.html',
