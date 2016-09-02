@@ -42,6 +42,8 @@
 // Utility classes
 @import "bower_components/bootstrap/less/utilities.less";
 @import "bower_components/bootstrap/less/responsive-utilities.less";
+// MY LESS
+@import "code-pen.less";
 
 /*  INTRO PAGE  */
 
@@ -74,30 +76,7 @@
 
 /*  INTRO PAGE END  */
 
-
-/*   RECENT PHOTOS  */
-
-.flickr-detail-photo {
-  padding: 50px @padding-base-horizontal;
-  background: @well-bg;
-  width: 100vw;
-  height: 100vh;
-  text-align: center;
-  nav,
-  .recent-detail-descrip {
-    margin-top: 2vh;
-  }
-  img {
-    max-width: 100%;
-    max-height: 80vh;
-  }
-}
-
-.recent-tile {
-  overflow: hidden;
-}
-
-
+@import("flickr-albums.less")
 /*   RECENT PHOTOS  END  */
 
 

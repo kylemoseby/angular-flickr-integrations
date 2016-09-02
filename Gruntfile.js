@@ -42,7 +42,8 @@ module.exports = function(grunt) {
       js: {
         files: [
           '<%= yeoman.app %>/scripts/{,*/}*.js',
-          '<%= yeoman.app %>/flickr/{,*/}*.js'
+          '<%= yeoman.app %>/flickr/{,*/}*.js',
+          '<%= yeoman.app %>/codepen/{,*/}*.js'
         ],
         tasks: ['newer:jshint:all', 'newer:jscs:all'],
         options: {
