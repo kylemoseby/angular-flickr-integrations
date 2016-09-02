@@ -44,15 +44,10 @@
 @import "bower_components/bootstrap/less/responsive-utilities.less";
 // MY LESS
 @import "code-pen.less";
+@import("flickr-albums.less");
+@import("flickr-recents.less");
 
 /*  INTRO PAGE  */
-
-.icon-github {
-  font-size: 29px;
-  position: relative;
-  top: 8px;
-  margin-right: @padding-base-horizontal;
-}
 
 .creative-commons {
   font-size: @font-size-small;
@@ -76,19 +71,24 @@
 
 /*  INTRO PAGE END  */
 
-@import("flickr-albums.less")
-/*   RECENT PHOTOS  END  */
-
-
-/*   FLICKR GALLERY   */
-
-.gallery-thumbs {
-  overflow: hidden;
-  img {
-    width: 100%;
-    height: 100%;
-  }
+.icon {
+  display: inline-block;
+  height: 36px;
+  width: 36px;
 }
+
+.icon.codepen {
+  background: url('/images/codepen.png');
+  background-size: cover;
+}
+
+.icon.github {
+  background: url('/images/GitHub-Mark-120px-plus.png');
+  background-size: cover;
+}
+
+
+/*   RECENT PHOTOS  END  */
 
 
 /* Small devices (tablets, 768px and up) */

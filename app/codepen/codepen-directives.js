@@ -67,8 +67,6 @@ angular.module('mkm.codepen', [
 
               escapedCode[attr] = response.data;
 
-              console.log($scope);
-
             });
         }
 
