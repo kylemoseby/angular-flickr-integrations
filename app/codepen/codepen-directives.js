@@ -31,12 +31,7 @@ angular.module('mkm.codepen', [
       // link: function($scope, iElm, iAttrs, controller) {
       link: function($scope) {
 
-
-        var extrFormat = function(resource) {
-          return resource.join(';');
-        }
-
-        var escapedCode = {
+        var escapedCode = $scope.options = {
           //   // All Optional
           title: $scope.pen.title,
           description: $scope.pen.description,
@@ -56,26 +51,50 @@ angular.module('mkm.codepen', [
           // head: '<meta name=\'viewport\' content=\'width=device-width\'>',
           css_external: extrFormat($scope.pen.css_external), // semi-colon separate multiple files
           js_external: extrFormat($scope.pen.js_external) // semi-colon separate multiple files
-
         };
+
+        var _codeDOM_ = {};
 
         function getExternal(url, attr) {
           $http({ method: 'GET', url: url })
             .then(function(response) {
 
-              $scope[attr] = response.data;
+              _codeDOM_[attr] = response.data;
 
               escapedCode[attr] = response.data;
 
             });
         }
 
+        function extrFormat(resource) {
+          return resource.join(';');
+        }
+
         getExternal($scope.pen.html, 'html');
         getExternal($scope.pen.css, 'css');
         getExternal($scope.pen.js, 'js');
 
+        $scope.codeDOM = _codeDOM_;
 
-        $scope.options = escapedCode;
+        $scope.codeVisible = [];
+
+        $scope.showCode = function($event, type) {
+
+          var typeIndOf = $scope.codeVisible.indexOf(type);
+          console.log(typeIndOf);
+          $event.preventDefault();
+
+          if (typeIndOf === -1) {
+            console.log(typeIndOf);
+
+            $scope.codeVisible.push(type);
+
+          } else {
+
+            $scope.codeVisible.splice(typeIndOf, typeIndOf + 1)
+
+          }
+        };
       }
     };
   }]);;

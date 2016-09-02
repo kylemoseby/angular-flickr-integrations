@@ -6716,19 +6716,26 @@ button.close {
     display: none !important;
   }
 }
-codepen .icon-codepen {
-  font-size: 36px;
+codepen .logo {
+  width: 120px;
+  /* required to center */
+  height: 120px;
+}
+codepen .outer-ring {
+  fill: black;
+}
+codepen .inner-box {
+  fill: black;
+}
+codepen body {
+  text-align: center;
 }
 /* Small devices (tablets, 768px and up) */
 /* Medium devices (desktops, 992px and up) */
 /* Large devices (large desktops, 1200px and up) */
+@import ("flickr-albums.less");
+@import ("flickr-recents.less");
 /*  INTRO PAGE  */
-.icon-github {
-  font-size: 29px;
-  position: relative;
-  top: 8px;
-  margin-right: 12px;
-}
 .creative-commons {
   font-size: 12px;
 }
@@ -6744,19 +6751,20 @@ codepen .icon-codepen {
   padding: 6px 0;
 }
 /*  INTRO PAGE END  */
-@import ("flickr-albums.less")
-/*   RECENT PHOTOS  END  */
-
-
-/*   FLICKR GALLERY   */
-
-.gallery-thumbs {
-  overflow: hidden;
-  img {
-    width: 100%;
-    height: 100%;
-  }
+.icon {
+  display: inline-block;
+  height: 36px;
+  width: 36px;
 }
+.icon.codepen {
+  background: url('/images/codepen.png');
+  background-size: cover;
+}
+.icon.github {
+  background: url('/images/GitHub-Mark-120px-plus.png');
+  background-size: cover;
+}
+/*   RECENT PHOTOS  END  */
 /* Small devices (tablets, 768px and up) */
 /* Medium devices (desktops, 992px and up) */
 /* Large devices (large desktops, 1200px and up) */
