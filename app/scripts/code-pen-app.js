@@ -2,7 +2,7 @@
 
 angular
   .module('demoApp', [
-    'ngMaterial'
+    'ngMessages',
     'ngMaterial',
     'mkm.flickr',
   ])
