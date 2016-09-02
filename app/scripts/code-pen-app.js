@@ -2,10 +2,11 @@
 
 angular
   .module('demoApp', [
+    'ngMessages',
     'ngMaterial',
     'mkm.flickr',
   ])
-  .controller('MainCtrl', ['$scope', '$http', function($scope) {
+  .controller('flickrCtrl', ['$scope', '$http', function($scope) {
 
     $scope.albumID = '72157642607219393';
 

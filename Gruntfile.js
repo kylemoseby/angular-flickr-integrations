@@ -57,7 +57,7 @@ module.exports = function(grunt) {
       },
 
       styles: {
-        files: ['style/{,*/}*.less'],
+        files: ['less/{,*/}*.less'],
         tasks: ['less', 'newer:copy:styles', 'postcss']
       },
 
@@ -134,7 +134,7 @@ module.exports = function(grunt) {
         // paths: ['assets/css']
         // },
         files: {
-          'app/styles/main.css': 'style/main.less'
+          'app/styles/main.css': 'less/main.less'
         }
       }
     },
@@ -404,8 +404,23 @@ module.exports = function(grunt) {
           usemin: 'scripts/scripts.js'
         },
         cwd: '<%= yeoman.app %>',
-        src: 'views/{,*/}*.html',
+        src: [
+          'flickr/{,*/}*.html',
+          'views/{,*/}*.html'
+        ],
         dest: '.tmp/templateCache.js'
+      },
+      codepen: {
+        options: {
+          module: 'demoApp',
+          htmlmin: '<%= htmlmin.dist.options %>',
+          usemin: 'scripts/scripts.js'
+        },
+        cwd: '<%= yeoman.app %>',
+        src: [
+          'flickr/{,*/}*.html',
+        ],
+        dest: 'codepen/codepenTemplates.js'
       }
     },
 
@@ -458,6 +473,11 @@ module.exports = function(grunt) {
           cwd: '<%= yeoman.app %>/flickr',
           dest: '<%= yeoman.dist %>/flickr',
           src: '{,*/}*.html'
+        }, {
+          expand: true,
+          cwd: 'bower_components/bootstrap/fonts',
+          dest: '<%= yeoman.dist %>/fonts',
+          src: '{,*/}*'
         }, {
           expand: true,
           cwd: 'bower_components/bootstrap/fonts',
