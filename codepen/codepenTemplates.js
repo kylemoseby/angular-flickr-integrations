@@ -1,8 +1,8 @@
-angular.module('mkm.flickr').run(['$templateCache', function($templateCache) {
+angular.module('demoApp').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('flickr/flickr-album.html',
-    "<!-- ERROR START --> <br>GITHUB {{albumId}} <div class=\"alert alert-danger\" role=\"alert\" ng-show=\"gallery.stat === 'fail'\"> <b>An error occurred</b> <br> Code: {{gallery.code}} / Message: {{gallery.message}} </div> <!-- ERROR END --> <!-- THUMBNAILS START --> <md-grid-list md-gutter=\"0.33em\" md-cols-sm=\"2\" md-cols-md=\"4\" md-cols-lg=\"8\" md-cols-gt-lg=\"8\" md-row-height=\"1:1\"> <md-grid-tile ng-repeat=\"img in gallery.photoset.photo\" class=\"gallery-thumbs\"> <img ng-src=\"https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_q.jpg\" ng-click=\"thumbClick($event, img, $index)\"> </md-grid-tile> </md-grid-list> <!-- THUMBNAILS END -->"
+    "<!-- ERROR START --> <br> <div class=\"alert alert-danger\" role=\"alert\" ng-show=\"gallery.stat === 'fail'\"> <b>An error occurred</b> <br> Code: {{gallery.code}} / Message: {{gallery.message}} </div> <!-- ERROR END --> <!-- THUMBNAILS START --> <md-grid-list md-cols=\"2\" md-cols-gt-xs=\"5\" md-cols-gt-lg=\"7\" md-row-height=\"1:1\" md-gutter=\"10px\"> <!-- <md-grid-list md-cols=\"2\" md-cols-gt-xs=\"5\" md-cols-gt-lg=\"7\"  md-row-height=\"1:1\"> --> <md-grid-tile ng-repeat=\"img in gallery.photoset.photo\" class=\"gallery-thumbs\"> <img ng-src=\"https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_q.jpg\" ng-click=\"thumbClick($event, img, $index)\"> </md-grid-tile> </md-grid-list> <!-- THUMBNAILS END -->"
   );
 
 
@@ -17,7 +17,7 @@ angular.module('mkm.flickr').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('flickr/flickr-recent.html',
-    "<!-- ERROR START --> <br> <div class=\"alert alert-danger\" role=\"alert\" ng-show=\"recent.stat == 'fail'\"> <b>An error occurred</b> <br> Code: {{recent.code}} / Message: {{recent.message}} </div> <!-- ERROR END --> <!-- THUMBNAILS START --> <md-grid-list md-gutter=\"0.33em\" md-cols=\"6\" md-row-height=\"1:1\" class=\"test\"> <md-grid-tile ng-repeat=\"img in thumbnailsShow\" class=\"recent-tile\"> <img ng-src=\"https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_q.jpg\" ng-click=\"thumbnailClick($event, img, $index)\"> </md-grid-tile> </md-grid-list> <!-- THUMBNAILS END --> <!-- NAV START --> <nav> <ul class=\"pager\" ng-hide=\"recent.photos.photo.length === 0\"> <li> <a ng-click=\"thumbnailsAdd()\"> <span class=\"glyphicon glyphicon-plus\"></span> </a> </li> </ul> </nav> <!-- NAV END -->"
+    "<!-- ERROR START --> <br> <div class=\"alert alert-danger\" role=\"alert\" ng-show=\"recent.stat == 'fail'\"> <b>An error occurred</b> <br> Code: {{recent.code}} / Message: {{recent.message}} </div> <!-- ERROR END --> <!-- THUMBNAILS START --> <md-grid-list md-cols=\"2\" md-cols-gt-xs=\"5\" md-cols-gt-lg=\"7\" md-row-height=\"1:1\" md-gutter=\"10px\"> <md-grid-tile class=\"recent-photos\" ng-repeat=\"img in thumbnailsShow\"> <img ng-src=\"https://farm{{img.farm-id}}.staticflickr.com/{{img.server-id}}/{{img.id}}_{{img.secret}}_q.jpg\" ng-click=\"thumbnailClick($event, img, $index)\"> </md-grid-tile> </md-grid-list> <!-- THUMBNAILS END --> <!-- NAV START --> <nav> <ul class=\"pager\" ng-hide=\"recent.photos.photo.length === 0\"> <li> <a ng-click=\"thumbnailsAdd()\"> <span class=\"glyphicon glyphicon-plus\"></span> </a> </li> </ul> </nav> <!-- NAV END -->"
   );
 
 }]);
