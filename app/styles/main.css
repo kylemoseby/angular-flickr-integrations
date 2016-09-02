@@ -6717,15 +6717,25 @@ button.close {
   }
 }
 codepen .logo {
-  width: 120px;
+  width: 24px;
   /* required to center */
-  height: 120px;
+  height: 24px;
+  position: relative;
+  top: 3px;
 }
 codepen .outer-ring {
-  fill: black;
+  fill: #fff;
 }
 codepen .inner-box {
-  fill: black;
+  fill: #fff;
+}
+codepen .btn {
+  font-size: 14px;
+  font-weight: 500;
+}
+codepen .btn-codepen .btn-label {
+  position: relative;
+  top: -5px;
 }
 codepen body {
   text-align: center;
@@ -6733,36 +6743,74 @@ codepen body {
 /* Small devices (tablets, 768px and up) */
 /* Medium devices (desktops, 992px and up) */
 /* Large devices (large desktops, 1200px and up) */
-@import ("flickr-albums.less");
-@import ("flickr-recents.less");
-/*  INTRO PAGE  */
-.creative-commons {
-  font-size: 12px;
+flickr-album {
+  position: relative;
+  top: -5px;
+  padding: 0 0;
+  padding-bottom: 10px;
 }
-.creative-commons a {
+flickr-album .flickr-detail-photo {
+  padding: 50px 12px;
+  background: #f5f5f5;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+flickr-album .flickr-detail-photo nav,
+flickr-album .flickr-detail-photo .recent-detail-descrip {
+  margin-top: 2vh;
+}
+flickr-album .flickr-detail-photo img {
+  max-width: 100%;
+  max-height: 80vh;
+}
+flickr-album .gallery-thumbs {
+  overflow: hidden;
+}
+flickr-album .gallery-thumbs img {
+  width: 100%;
+  height: 100%;
+}
+.flickr-detail-photo {
+  padding: 50px 12px;
+  background: #f5f5f5;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+.flickr-detail-photo nav,
+.flickr-detail-photo .recent-detail-descrip {
+  margin-top: 2vh;
+}
+.flickr-detail-photo img {
+  max-width: 100%;
+  max-height: 80vh;
+}
+.recent-photos {
+  overflow: hidden;
+}
+.recent-photos img {
+  max-height: 100%;
+  width: 100%;
+}
+.main-page .flex-100 {
+  padding-right: 16px;
+}
+.main-page .creative-commons {
+  position: relative;
+  top: -10px;
+}
+.main-page .icon-github {
+  font-size: 30px;
+}
+.main-page .icon-github a {
   text-decoration: none;
 }
-.main-page {
-  padding: 2vh 5%;
+.main-page .well-lg {
+  padding: 0 10px;
 }
-#the-end .icon-github {
-  color: #222222;
-  font-size: 31px;
-  padding: 6px 0;
-}
-/*  INTRO PAGE END  */
-.icon {
-  display: inline-block;
-  height: 36px;
-  width: 36px;
-}
-.icon.codepen {
-  background: url('/images/codepen.png');
-  background-size: cover;
-}
-.icon.github {
-  background: url('/images/GitHub-Mark-120px-plus.png');
-  background-size: cover;
+pre {
+  white-space: pre-wrap;
 }
 /*   RECENT PHOTOS  END  */
 /* Small devices (tablets, 768px and up) */
