@@ -1,11 +1,15 @@
 @import "variables.less";
 codepen {
-  .list-code {}
+  .code-list {}
+  .codepen-code {}
+  .codepen-type {}
   // CodePen SVG Logo
   .logo {
-    width: 120px;
+    width: @line-height-computed;
     /* required to center */
-    height: 120px;
+    height: @line-height-computed;
+    position: relative;
+    top: 3px;
   }
   .outer-ring {
     fill: black;
