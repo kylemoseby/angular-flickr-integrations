@@ -337,7 +337,6 @@ module.exports = function(grunt) {
       source: {
         src: [
           '.tmp/templateCache.js',
-          'codepen_cache/codepen_templates.js',
           'app/flickr/flickr-restapi.js',
           'app/flickr/flickr-album.js',
           'app/flickr/flickr-img.js',
@@ -403,7 +402,7 @@ module.exports = function(grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'demoApp',
+          module: 'mkm.flickr',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
@@ -417,7 +416,7 @@ module.exports = function(grunt) {
       },
       codepen: {
         options: {
-          module: 'demoApp',
+          module: 'mkm.flickr',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },

@@ -17,7 +17,7 @@
     "angular-mocks": "^1.4.0"
   },
   "appPath": "app",
-  "moduleName": "demoApp",
+  "moduleName": "mkm.flickr",
   "resolutions": {
     "angular-bootstrap": "^2.1.3"
   }
