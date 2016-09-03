@@ -336,11 +336,11 @@ module.exports = function(grunt) {
       },
       source: {
         src: [
-          '.tmp/templateCache.js',
           'app/flickr/flickr-restapi.js',
           'app/flickr/flickr-album.js',
           'app/flickr/flickr-img.js',
           'app/flickr/flickr-recent.js',
+          '.tmp/templateCache.js'
         ],
         dest: 'source/angular-flickr-integrations.js'
       }
@@ -409,7 +409,6 @@ module.exports = function(grunt) {
         cwd: '<%= yeoman.app %>',
         src: [
           'flickr/{,*/}*.html',
-          'views/{,*/}*.html',
           'codepen/{,*/}*.html'
         ],
         dest: '.tmp/templateCache.js'
