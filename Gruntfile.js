@@ -336,12 +336,11 @@ module.exports = function(grunt) {
       },
       source: {
         src: [
-          '.tmp/templateCache.js',
-          'codepen_cache/codepen_templates.js',
           'app/flickr/flickr-restapi.js',
           'app/flickr/flickr-album.js',
           'app/flickr/flickr-img.js',
           'app/flickr/flickr-recent.js',
+          '.tmp/sourceTemplateCache.js'
         ],
         dest: 'source/angular-flickr-integrations.js'
       }
@@ -415,17 +414,17 @@ module.exports = function(grunt) {
         ],
         dest: '.tmp/templateCache.js'
       },
-      codepen: {
+      source: {
         options: {
-          module: 'demoApp',
+          module: 'mkm.flickr',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
         cwd: '<%= yeoman.app %>',
         src: [
-          'codepen/{,*/}*.html',
+          'flickr/{,*/}*.html',
         ],
-        dest: 'codepen_cache/codepen_templates.js'
+        dest: '.tmp/sourceTemplateCache.js'
       }
     },
 
@@ -567,7 +566,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('source', [
-    'ngtemplates:dist',
+    'ngtemplates:source',
     'concat:source',
     'uglify:source'
   ]);
