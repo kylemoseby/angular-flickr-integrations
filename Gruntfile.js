@@ -337,10 +337,10 @@ module.exports = function(grunt) {
       source: {
         src: [
           'app/flickr/flickr-restapi.js',
-          '.tmp/templateCache.js',
           'app/flickr/flickr-album.js',
           'app/flickr/flickr-img.js',
-          'app/flickr/flickr-recent.js'
+          'app/flickr/flickr-recent.js',
+          '.tmp/templateCache.js'
         ],
         dest: 'source/angular-flickr-integrations.js'
       }
