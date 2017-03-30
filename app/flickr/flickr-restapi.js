@@ -73,4 +73,11 @@ angular.module('mkm.flickr', [
   }])
   .controller('mainCtrlr', ['', function() {
 
+  }])
+  .config(['$sceDelegateProvider', function($sceDelegateProvider) {
+
+    $sceDelegateProvider.resourceUrlWhitelist([
+      'self',
+      'https://api.flickr.com/services/rest/**'
+    ]);
   }]);

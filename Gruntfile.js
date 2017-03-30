@@ -337,10 +337,10 @@ module.exports = function(grunt) {
       source: {
         src: [
           'app/flickr/flickr-restapi.js',
+          '.tmp/templateCache.js',
           'app/flickr/flickr-album.js',
           'app/flickr/flickr-img.js',
-          'app/flickr/flickr-recent.js',
-          '.tmp/templateCache.js'
+          'app/flickr/flickr-recent.js'
         ],
         dest: 'source/angular-flickr-integrations.js'
       }
@@ -408,8 +408,7 @@ module.exports = function(grunt) {
         },
         cwd: '<%= yeoman.app %>',
         src: [
-          'flickr/{,*/}*.html',
-          'codepen/{,*/}*.html'
+          'flickr/{,*/}*.html'
         ],
         dest: '.tmp/templateCache.js'
       },
@@ -524,7 +523,7 @@ module.exports = function(grunt) {
 
     grunt.task.run([
       'clean:server',
-      // 'wiredep',
+      'wiredep',
       'concurrent:server',
       'postcss:server',
       'connect:livereload',
@@ -539,7 +538,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-    // 'wiredep',
+    'wiredep',
     'concurrent:test',
     'postcss',
     'connect:test',
