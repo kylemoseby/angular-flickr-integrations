@@ -18,4 +18,7 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .controller('mainCtrlr', ['', function() {
+
+  }]);

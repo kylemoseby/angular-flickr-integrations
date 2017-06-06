@@ -1,24 +1,21 @@
 {
-  "name": "Angular Flickr Integrations",
+  "name": "angular-flickr-integrations",
   "description": "Collection of services and directives that use Flickr's REST API",
   "version": "1.0.0",
   "homepage": "https://github.com/kylemoseby/angular-flickr-integrations",
   "license": "MIT",
   "main": "./source/angular-flickr-integrations.js",
   "dependencies": {
-    "angular": "#1.4.14",
-    "angular-animate": "#1.4.14",
-    "angular-resource": "#1.4.14",
-    "angular-route": "#1.4.14",
-    "angular-sanitize": "#1.4.14",
-    "angular-material": "^1.0.9"
+    "angular": "^1.6.4",
+    "angular-animate": "^1.6.4",
+    "angular-resource": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "angular-sanitize": "^1.6.4",
+    "angular-material": "^1.1.4"
   },
   "devDependencies": {
-    "angular-mocks": "#1.4.14"
+    "bootstrap": "^3.3.7"
   },
   "appPath": "app",
-  "moduleName": "mkm.flickr",
-  "resolutions": {
-    "angular": "1.4.14"
-  }
+  "moduleName": "mkm.flickr"
 }

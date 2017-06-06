@@ -26,7 +26,7 @@ angular.module('mkm.flickr')
       var photoData = new $flickr.getRecent(scope.flickrID);
 
       photoData.then(function(data) {
-
+        console.log(data);
         scope.recent = data.data.photos.photo;
 
         scope.thumbnailsAdd();

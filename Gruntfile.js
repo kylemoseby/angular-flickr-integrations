@@ -564,6 +564,8 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('source', [
+    'clean:dist',
+    'useminPrepare',
     'ngtemplates:dist',
     'concat:source',
     'uglify:source'

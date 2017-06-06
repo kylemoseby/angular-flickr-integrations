@@ -1,17 +1,4 @@
 <md-content class="main-page" layout="row" layout-padding layout-wrap class="main-page">
-  <!-- TITLE -->
-  <div flex="100" flex-md="80" flex-offset-md="10" flex-gt-md="15">
-    <h1>Angularjs Integrations for Flickr</h1>
-    <ul class="list-inline">
-      <li>
-        <a href="https://github.com/kylemoseby/angular-flickr-integrations" target="_blank"><span class="icon-github"></span></a>
-      </li>
-      <li>
-        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" class="creative-commons"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
-      </li>
-    </ul>
-  </div>
-  <!-- / TITLE -->
   <!-- ALBUM -->
   <div flex="100" flex-order-gt-md="4" flex-md="80" flex-offset-md="10" flex-gt-md="50">
     <h2>Demos</h2>
@@ -37,11 +24,27 @@
     <codepen info="codepen.flickrRecent"> </codepen>
   </div>
   <!-- / RECENT PHOTOS -->
+  <!-- TITLE -->
+  <div flex="100" flex-md="80" flex-offset-md="10" flex-gt-md="15">
+    <h1>Angularjs Integrations for Flickr</h1>
+    <ul class="list-inline">
+      <li>
+        <a href="https://github.com/kylemoseby/angular-flickr-integrations" target="_blank"><span class="icon-github"></span></a>
+      </li>
+      <li>
+        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" class="creative-commons"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+      </li>
+    </ul>
+  </div>
+  <!-- / TITLE -->
   <!-- DOCS -->
   <div flex="100" flex-md="80" flex-offset-md="10" flex-gt-md="35">
     <h2>Run with Grunt</h2>
     <p>Download the <a href="https://github.com/kylemoseby/angular-flickr-integrations">project</a> and run
       <kbd>grunt serve</kbd>
+    </p>
+    <p>Source is compiled by running
+      <kbd>grunt source</kbd>
     </p>
     <h2>Dependencies</h2>
     <p>Dependencies are maintained using <a href="https://bower.io/" target="_blank">Bower</a>. A list of dependencies can be found in the bower.json file in the projects root directory. To update run:
@@ -67,5 +70,6 @@
     </ul>
     <p>For production enviorments it is highly reccomended to use <a href="https://docs.angularjs.org/api/ng/service/$templateCache" target="_blank">$templateCache</a>. A npm/grunt plugin can be found <a href="https://www.npmjs.com/package/grunt-angular-templates" target="_blank">here</a>.</p>
     <p>The Gruntfile.js in this project's GitHub repository utilizes this plugin for "production" builds.</p>
-    <!-- / DOCS -->
+  </div>
+  <!-- / DOCS -->
 </md-content>
