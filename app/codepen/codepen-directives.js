@@ -81,11 +81,10 @@ angular.module('mkm.codepen', [
         $scope.showCode = function($event, type) {
 
           var typeIndOf = $scope.codeVisible.indexOf(type);
-          console.log(typeIndOf);
+
           $event.preventDefault();
 
           if (typeIndOf === -1) {
-            console.log(typeIndOf);
 
             $scope.codeVisible.push(type);
 
